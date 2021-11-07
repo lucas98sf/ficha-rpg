@@ -4,20 +4,25 @@ body {
     color: red;
 }
 
-.nomePlayer, .racaPlayer {
+.playerNameText,
+.playerRaceText {
     display: flex;
     justify-content: center;
     font-family: monospace;
     font-size: 50px;
-    color: white;
+    color: black;
 }
 
-.imgEsqueleto {
+.vidaEsqueleto {
+    color: cadetblue;
+}
+
+.playerImg {
     display: flex;
     justify-content: center;
 }
 
-#imgEsqueleto {
+#playerImg {
     width: 200px;
 }
 
@@ -30,17 +35,24 @@ body {
     justify-content: center;
 }
 
-.up, .down, .periciaValue, .rolarBotao, .resultadoTexto{
+.up,
+.down,
+.periciaValue,
+.rolarBotao,
+.resultadoTexto {
     height: 35px;
     font-family: monospace;
     font-size: 16px;
 }
 
-.up, .down, .periciaValue {
+.up,
+.down,
+.periciaValue {
     width: 30px;
 }
 
-.up, .down{
+.up,
+.down {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,11 +62,11 @@ body {
     border-bottom: none;
 }
 
-.up{
+.up {
     border-right: none;
 }
 
-.periciaValue{
+.periciaValue {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,7 +77,7 @@ body {
     border-color: white;
 }
 
-.rolarBotao{
+.rolarBotao {
     width: 200px;
     display: flex;
     align-items: center;
@@ -77,24 +89,49 @@ body {
     border-color: white;
 }
 
-#buttonSaltar, #upSaltar, #downSaltar, #Saltar,
-#buttonMedicina, #upMedicina, #downMedicina, #Medicina,
-#buttonLínguas, #upLínguas, #downLínguas, #Línguas,
-#buttonLockPick, #upLockPick, #downLockPick, #LockPick,
-#buttonCharme, #upCharme, #downCharme, #Charme,
-#buttonShotguns, #upShotguns, #downShotguns, #Shotguns,
-#buttonEncontrar, #upEncontrar, #downEncontrar, #Encontrar{
+#buttonSaltar,
+#upSaltar,
+#downSaltar,
+#Saltar,
+#buttonMedicina,
+#upMedicina,
+#downMedicina,
+#Medicina,
+#buttonLínguas,
+#upLínguas,
+#downLínguas,
+#Línguas,
+#buttonLockPick,
+#upLockPick,
+#downLockPick,
+#LockPick,
+#buttonCharme,
+#upCharme,
+#downCharme,
+#Charme,
+#buttonShotguns,
+#upShotguns,
+#downShotguns,
+#Shotguns,
+#buttonEncontrar,
+#upEncontrar,
+#downEncontrar,
+#Encontrar {
     border-bottom: 2px solid;
     border-color: white;
 }
 
-.rolarBotao:hover, .up:hover, .down:hover {
+.rolarBotao:hover,
+.up:hover,
+.down:hover {
     color: black;
     background-color: rgb(255, 255, 255);
     border-color: white;
 }
 
-.rolarBotao:active, .up:active, .down:active {
+.rolarBotao:active,
+.up:active,
+.down:active {
     color: black;
     background-color: rgb(128, 128, 128);
 }
@@ -120,13 +157,13 @@ body {
     text-align: center;
 }
 
-#containerD20{
+#containerD20 {
     position: relative;
     text-align: center;
 }
 
 .centered {
-    position:absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -135,8 +172,7 @@ body {
     font-size: 30px;
 }
 
-
-#resultadoTexto{
+#resultadoTexto {
     display: flex;
     justify-content: center;
     color: white;

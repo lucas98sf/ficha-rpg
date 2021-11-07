@@ -22,7 +22,6 @@ async function playersHandler(req, res) {
           const player_ = new Player(player);
           return player_.toObject({ virtuals: true });
         });
-        // console.log(result);
         res.status(200).json(result);
       } catch (err) {
         handleError(err, res);
