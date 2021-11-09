@@ -4,185 +4,158 @@ body {
     color: red;
 }
 
-.playerNameText,
-.playerRaceText {
+/* MENU */
+.playersMenu{
     display: flex;
     justify-content: center;
-    font-family: monospace;
-    font-size: 50px;
-    color: black;
-}
-
-.vidaEsqueleto {
-    color: cadetblue;
-}
-
-.playerImg {
-    display: flex;
-    justify-content: center;
-}
-
-#playerImg {
-    width: 200px;
-}
-
-.tituloPericia {
-    display: flex;
-    font-size: 30px;
-    font-family: monospace;
-    color: white;
-    margin: auto;
-    justify-content: center;
-}
-
-.up,
-.down,
-.periciaValue,
-.rolarBotao,
-.resultadoTexto {
-    height: 35px;
-    font-family: monospace;
-    font-size: 16px;
-}
-
-.up,
-.down,
-.periciaValue {
-    width: 30px;
-}
-
-.up,
-.down {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    border: 2px solid;
-    border-bottom: none;
+    text-align: center;
+    min-height: 100vh;
 }
-
-.up {
-    border-right: none;
-}
-
-.periciaValue {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    border: none;
-    border-top: 2px solid;
-    border-color: white;
-}
-
-.rolarBotao {
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: black;
-    color: white;
-    border: 2px solid;
-    border-bottom: none;
-    border-color: white;
-}
-
-#buttonSaltar,
-#upSaltar,
-#downSaltar,
-#Saltar,
-#buttonMedicina,
-#upMedicina,
-#downMedicina,
-#Medicina,
-#buttonLínguas,
-#upLínguas,
-#downLínguas,
-#Línguas,
-#buttonLockPick,
-#upLockPick,
-#downLockPick,
-#LockPick,
-#buttonCharme,
-#upCharme,
-#downCharme,
-#Charme,
-#buttonShotguns,
-#upShotguns,
-#downShotguns,
-#Shotguns,
-#buttonEncontrar,
-#upEncontrar,
-#downEncontrar,
-#Encontrar {
-    border-bottom: 2px solid;
-    border-color: white;
-}
-
-.rolarBotao:hover,
-.up:hover,
-.down:hover {
-    color: black;
-    background-color: rgb(255, 255, 255);
-    border-color: white;
-}
-
-.rolarBotao:active,
-.up:active,
-.down:active {
-    color: black;
-    background-color: rgb(128, 128, 128);
-}
-
-.classePericia {
-    background-color: black;
-    color: white;
-    margin: 15px;
-    justify-self: center;
-}
-
-.grid-container {
+.playersGrid{
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto auto;
-}
-
-.dadoTexto {
-    color: rgb(255, 255, 255);
-    display: flex;
+    justify-items: center;
     justify-content: center;
-    font-size: 30px;
-    text-align: center;
 }
-
-#containerD20 {
-    position: relative;
-    text-align: center;
+/*  */
+/* BOTÃO NO GRID DO MENU */
+.playerButton{
+    display: grid;
+    width: 500px;
+    height: 300px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    justify-items: center;
+    margin: 2px;
 }
+/*  */
 
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-family: monospace;
-    font-size: 30px;
-}
-
-#resultadoTexto {
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 35px;
+/* ITENS DIRETO NO GRID DO BOTÃO */
+.playerNameText{
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 25px;
     font-family: monospace;
 }
-#imgD20 {
-    width: 200px;
+.playerRaceText{
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 25px;
+    font-family: monospace;
 }
+.playerImg{
+    grid-column: 1;
+    grid-row: 3/10;
+    width: 225px;
+}
+/*  */
 
-dt {
-    display: flex;
+/* PARENTES NO GRID PRINCIPAL DO BOTAO */
+.playerStatsText{
+    display: grid;
+    grid-column: 2;
+    grid-row: 1 / 4;
 }
+.playerStatsText > *{
+    display: flex;
+    outline: 1px solid;
+    border: 1px solid;
+    line-height: 20px;
+    width: 50px;
+    margin: 5px;
+    justify-content: center;
+}
+.playerAttributesText{
+    grid-column: 2/3;
+    grid-row: 5/8;
+    display: grid;
+    font-size: 20px;
+    font-family: monospace;
+    grid-template-columns: repeat(4, 1fr);
+}
+.playerAttributesText > *{
+    display: flex;
+    outline: 1px solid;
+    border: 1px solid;
+    line-height: 20px;
+    width: 50px;
+    margin: 3px;
+}
+/*  */
+
+/* ITENS NO GRID DE STATS */
+.playerHealthText{
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 20px;
+    font-family: monospace;
+}
+.playerSanityText{
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 20px;
+    font-family: monospace;
+}
+.playerMagicText{
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 20px;
+    font-family: monospace;
+}
+/*  */
+/* CONFIGURAÇÕES PERSONALIZADAS POR PERSONAGEM DOS BOTOES */
+/* MIRKHALO */
+#MirkhaloButton{
+    grid-row: 1;
+    grid-column: 1;
+    background-color: #5d0000;
+}
+#MirkhaloButton:hover{
+    border-color: #c90000;
+}
+/*  */
+
+/* DRAKE */
+#DrakeButton{
+    grid-row: 1;
+    grid-column: 2;
+    background-color: #012f40;
+}
+#DrakeButton:hover{
+    border-color: #05b9fa;
+}
+/*  */
+
+/* KIERAN */
+#KieranButton{
+    grid-row: 1;
+    grid-column: 3;
+    background-color: #2b2b2e;
+}
+#KieranButton:hover{
+    border-color: #787878;
+}
+/*  */
+
+/* MENDI */
+#MendiButton{
+    grid-row: 2;
+    grid-column: 1;
+    background-color: #006161;
+}
+#MendiButton:hover{
+    border-color: #00c8c8;
+}
+/*  */
+
+/* DÓRIS */
+#DórisButton{
+    grid-row: 2;
+    grid-column: 2;
+    background-color: #610046;
+}
+#DórisButton:hover{
+    border-color: #d5009a;
+}
+/*  */
+
+

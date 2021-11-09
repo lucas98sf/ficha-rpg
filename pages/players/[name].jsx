@@ -8,8 +8,8 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function PlayerPage({ player }) {
-    const { Nome, Imagem, Raça, Status } = player;
-    const props = { Nome, Imagem, Raça, Status };
+    const { Nome, Imagem, Raça, Status, Atributos } = player;
+    const props = { Nome, Imagem, Raça, Status, Atributos };
     return (
         //<div class="grid-container">
         <center>
