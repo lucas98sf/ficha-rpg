@@ -9,12 +9,14 @@ export async function getServerSideProps() {
 export default function PlayerPage({ players }) {
     return (
         //<div class="grid-container">
-        <div>
+        <div className="playersMenu">
+        <div className="playersGrid">
             {players.map((player) => {
-                const { Nome, Imagem, Raça, Status } = player;
-                const props = { menu: true, Nome, Imagem, Raça, Status };
+                const { Nome, Imagem, Raça, Status, Atributos } = player;
+                const props = { menu: true, Nome, Imagem, Raça, Status, Atributos };
                 return <Profile key={Nome} {...props} />;
             })}
+        </div>
         </div>
     );
 }
