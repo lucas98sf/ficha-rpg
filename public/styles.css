@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 html,
 body {
     background: #000000;
@@ -20,32 +23,37 @@ body {
 /*  */
 /* BOTÃO NO GRID DO MENU */
 .playerButton{
+    font-family: "monospace";
+    font-size: 1vw;
+    font-style: normal;
     display: grid;
-    width: 500px;
-    height: 300px;
-    border: 2px solid rgba(0, 0, 0, 0);
+    width: fit-content;
+    height: fit-content;
+    border: 0.2vw solid rgba(255, 255, 255, 0);
+    border-top: 0vw;
     justify-items: center;
-    margin: 2px;
+    background: #00000000;
+    margin: 0.2vw;
+    padding: 0;
 }
 /*  */
 
 /* ITENS DIRETO NO GRID DO BOTÃO */
 .playerNameText{
-    grid-column: 1;
+    font-size: 1.5vw;
+    border: 0.2vw solid;
+    width: 100%;
+    grid-column: 1/3;
     grid-row: 1;
-    font-size: 25px;
-    font-family: monospace;
 }
 .playerRaceText{
     grid-column: 1;
     grid-row: 2;
-    font-size: 25px;
-    font-family: monospace;
 }
 .playerImg{
     grid-column: 1;
-    grid-row: 3/10;
-    width: 225px;
+    grid-row: 2/10;
+    width: 14vw;
 }
 /*  */
 
@@ -53,32 +61,35 @@ body {
 .playerStatsText{
     display: grid;
     grid-column: 2;
-    grid-row: 1 / 4;
+    grid-row: 2 / 4;
 }
 .playerStatsText > *{
     display: flex;
-    outline: 1px solid;
-    border: 1px solid;
-    line-height: 20px;
-    width: 50px;
-    margin: 5px;
+    outline: 0.1vw solid;
+    border: 0.1vw solid;
+    line-height: 1vw;
+    width: fit-content;
+    margin: 0.3vw;
     justify-content: center;
+    padding-right: 0.3vw;
+    padding-left: 0.3vw;
 }
 .playerAttributesText{
     grid-column: 2/3;
     grid-row: 5/8;
     display: grid;
-    font-size: 20px;
-    font-family: monospace;
     grid-template-columns: repeat(4, 1fr);
 }
 .playerAttributesText > *{
     display: flex;
-    outline: 1px solid;
-    border: 1px solid;
-    line-height: 20px;
-    width: 50px;
-    margin: 3px;
+    outline: 0.1vw solid;
+    border: 0.1vw solid;
+    line-height: 1vw;
+    width: 2.2vw;
+    margin: 0.3vw;
+    justify-content: center;
+    padding-left: 0.02vw;
+    padding-right: 0.02vw;
 }
 /*  */
 
@@ -86,20 +97,14 @@ body {
 .playerHealthText{
     grid-column: 1;
     grid-row: 1;
-    font-size: 20px;
-    font-family: monospace;
 }
 .playerSanityText{
     grid-column: 3;
     grid-row: 1;
-    font-size: 20px;
-    font-family: monospace;
 }
 .playerMagicText{
     grid-column: 2;
     grid-row: 1;
-    font-size: 20px;
-    font-family: monospace;
 }
 /*  */
 /* CONFIGURAÇÕES PERSONALIZADAS POR PERSONAGEM DOS BOTOES */
@@ -107,10 +112,14 @@ body {
 #MirkhaloButton{
     grid-row: 1;
     grid-column: 1;
-    background-color: #5d0000;
+}
+#MirkhaloButton:hover #MirkhaloText{
+    color: #c90000 !important;
+    border-color: #c90000 !important;
 }
 #MirkhaloButton:hover{
-    border-color: #c90000;
+    color: #c90000 !important;
+    border-color: #c90000 !important;
 }
 /*  */
 
@@ -118,10 +127,14 @@ body {
 #DrakeButton{
     grid-row: 1;
     grid-column: 2;
-    background-color: #012f40;
+}
+#DrakeButton:hover #DrakeText{
+    color: #05b9fa !important;
+    border-color: #05b9fa !important;
 }
 #DrakeButton:hover{
-    border-color: #05b9fa;
+    color: #05b9fa !important;
+    border-color: #05b9fa !important;
 }
 /*  */
 
@@ -129,33 +142,289 @@ body {
 #KieranButton{
     grid-row: 1;
     grid-column: 3;
-    background-color: #2b2b2e;
+}
+#KieranButton:hover #KieranText{
+    color: #808080 !important;
+    border-color: #808080 !important;
 }
 #KieranButton:hover{
-    border-color: #787878;
+    color: #808080 !important;
+    border-color: #808080 !important;
 }
 /*  */
 
 /* MENDI */
 #MendiButton{
     grid-row: 2;
-    grid-column: 1;
-    background-color: #006161;
+    grid-column: 1/3;
+}
+#MendiButton:hover #MendiText{
+    color: #00c8c8 !important;
+    border-color: #00c8c8 !important;
 }
 #MendiButton:hover{
-    border-color: #00c8c8;
+    color: #00c8c8 !important;
+    border-color: #00c8c8 !important;
 }
 /*  */
 
 /* DÓRIS */
 #DórisButton{
     grid-row: 2;
-    grid-column: 2;
-    background-color: #610046;
+    grid-column: 2/4;
+}
+#DórisButton:hover #DórisText{
+    color: #d5009a !important;
+    border-color: #d5009a !important;
 }
 #DórisButton:hover{
-    border-color: #d5009a;
+    color: #d5009a !important;
+    border-color: #d5009a !important;
 }
 /*  */
 
+/* PAGINA DO PLAYER */
+.tudo{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+.centro{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: min-content;
+    font-family: monospace;
+    font-size: 2.5vw;
+    color: white;
+    grid-column: 2;
+    grid-row: 1;
+    align-items: center;
+}
+.playerNameFicha,.playerHealthFicha,.playerImgFicha{
+    grid-column: 2;
+}
+.playerImgFicha{
+    width: 15vw;
+}
+.playerSanityFicha,.playerMagicFicha{
+    grid-row: 2;
+}
+.playerMagicFicha{
+    grid-column: 3;
+}
+.playerSanityFicha,.playerMagicFicha,.playerHealthFicha{
+    padding: 0.5vw;
+    font-size: 1.5vw;
+}
 
+
+/* COISAS PERICIAS */
+.pericias{
+    display: grid;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 3;
+}
+.periciaType{
+    color: white;
+    font-family: monospace;
+    font-size: 1.8vw;
+    padding: 1vw;
+}
+.periciaNameValue{
+    display: grid;
+    border: 0.1vw solid white;
+    border-bottom: none;
+    width: fit-content;
+}
+.buttonsGroup{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-column: 2;
+}
+.buttonsGroup > *{
+    font-family: monospace;
+    font-size: 1vw;
+    color: white;
+    text-align: center;
+    border: none;
+    border-left: 0.1vw solid white;
+    background: #00000000;
+}
+.periciaName:hover,.up:hover,.down:hover{
+    color:black;
+    background: white;
+}
+.periciaName:active,.up:active,.down:active{
+    background: grey;
+}
+.periciaValue{
+    text-align: center;
+    width: 2vw;
+}
+.up,.down{
+    width: 2vw;
+}
+/*  */
+
+/* OUTRAS COISAS DAS PERICIAS */
+.periciaName{
+    grid-column: 1;
+    width: 10vw;
+}
+.periciaName{
+    font-family: monospace;
+    color: white;
+    width: 11vw;
+    font-size: 1vw;
+    text-align: center;
+    border: none;
+    border-bottom: none;
+    background: #00000000;
+}
+.up,.down,.periciaName,.periciaValue{
+    padding: 0.1vw;
+}
+#Saltar,#SaltarButtons,
+#Medicina,#MedicinaButtons,
+#Línguas,#LínguasButtons,
+#LockPick,#LockPickButtons,
+#Charme,#CharmeButtons,
+#Shotguns,#ShotgunsButtons,
+#Encontrar,#EncontrarButtons {
+    border-bottom: 0.1vw solid white;
+}
+/*  */
+
+/* MAIS COISAS DAS PERICIAS SO QUE AGORA MAIS ESPECIFICO */
+#Físico{
+    grid-column: 1;
+    grid-row: 2;
+}
+#Ciências{
+    grid-column: 2;
+    grid-row: 2;
+}
+#Geral{
+    grid-column: 3;
+    grid-row: 2;
+}
+#Tecnologia{
+    grid-column: 1;
+    grid-row: 3;
+}
+#Sociais{
+    grid-column: 2;
+    grid-row: 3;
+}
+#Armas{
+    grid-column: 3;
+    grid-row: 3;
+}
+#Percepção{
+    grid-column: 2;
+    grid-row: 1;
+}
+/*  */
+
+/* RESISTENCIAS */
+.resistances{
+    font-family: monospace;
+    font-size: 1vw;
+    color: white;
+    width: 8vw;
+    grid-column: 3;
+    grid-row: 3;
+}
+.resistancesGrid{
+    display: grid;
+    justify-content: space-between;
+    border: 0.1vw solid white;
+}
+.titleResistances{
+    font-size: 1.15vw;
+}
+.resistanceName{
+    grid-column: 1;
+    padding: 0.1vw;
+}
+.resistanceValue{
+    grid-column: 2;
+    border-left: 0.1vw solid white;
+    padding: 0.1vw;
+}
+
+/* ATRIBUTOS */
+.attributesFicha{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-row: 2;
+    grid-column: 2;
+}
+.attributesGrid{
+    display: grid;
+    font-family: monospace;
+    font-size: 1.2vw;
+    display: grid;
+    color: white;
+    justify-content: space-between;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    width: 4vw;
+}
+.attributeNameFicha{
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    font-size: 1.2vw;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
+    border: 0.1vw solid white;
+    border-bottom: none;
+    width: 4vw;
+}
+.attributeNameFicha:hover{
+    background-color: white;
+    color: black;
+}
+.attributeNameFicha:active{
+    background-color: grey;
+}
+.attributeButtonsFicha{
+    display: flex;
+    width: fit-content;
+    border: 0.1vw solid white;
+    justify-content: space-between;
+}
+.attributeUp,.attributeDown{
+    font-family: monospace;
+    font-size: 0.8vw;
+    width: 1.1vw;
+    background-color: black;
+    color: white;
+    padding: 0px;
+}
+.attributeUp:hover,.attributeDown:hover{
+    background-color: white;
+    color: black;
+}
+.attributeUp:active,.attributeDown:active{
+    background-color: grey;
+}
+
+.attributeUp{
+    border: none;
+    border-right: 0.1vw solid white;
+}
+.attributeDown{
+    border:none;
+    border-left: 0.1vw solid white;
+}
+
+.attributeValueFicha{
+    width: 1.2vw;
+    text-align: center;
+    font-size: 1vw;
+    padding-right: 0.2vw;
+    padding-left: 0.2vw;
+}
