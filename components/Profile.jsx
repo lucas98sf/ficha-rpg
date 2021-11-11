@@ -7,29 +7,29 @@ export default function Profile({
     Raça,
     Status,
     Atributos,
+    Cor,
 }) {
     return (
         <Link
             className={menu ? "" : "disabled='true"}
             href={`/players/${Nome}`}
         >
-            <button className="playerButton" id={`${Nome}Button`}>
-                <div className="playerNameText">{Nome}</div>
+            
+            <button className="playerButton" id={`${Nome}Button`} style={{color:`white`,borderColor:`white`}}>
+                <div className="playerNameText" id={`${Nome}Text`} style={{borderColor:`white`}}>{Nome}</div>
                 <div className="playerImg">
                     <img className="playerImg" src={Imagem}></img>
                 </div>
-                <div className="playerRaceText">{Raça}</div>
-
+                {/* <div className="playerRaceText">{Raça}</div> */}
                 <div className="playerStatsText" id={`status${Nome}Text`}>
                     <div className="playerHealthText" id={`health${Nome}Text`}>
-                        PV ⠀{Status["Vida Atual"]}/{Status["Vida Máxima"]}⠀
+                        PV<br />{Status["Vida Atual"]}/{Status["Vida Máxima"]}
                     </div>
                     <div className="playerSanityText" id={`sanity${Nome}Text`}>
-                        PS ⠀{Status["Sanidade Atual"]}/
-                        {Status["Sanidade Máxima"]}⠀
+                        PS<br />{Status["Sanidade Atual"]}/{Status["Sanidade Máxima"]}
                     </div>
                     <div className="playerMagicText" id={`magic${Nome}Text`}>
-                        PM ⠀{Status["Magia Atual"]}/{Status["Magia Máxima"]}⠀
+                        PM<br />{Status["Magia Atual"]}/{Status["Magia Máxima"]}
                     </div>
                 </div>
                 <div
@@ -39,7 +39,7 @@ export default function Profile({
                     {Object.entries(Atributos).map(([nome, valor]) => {
                         return (
                             <div key={nome} className={`player${nome}Text`}>
-                                {nome} ⠀{valor}
+                                {nome}<br />{valor}
                             </div>
                         );
                     })}
