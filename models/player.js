@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const PlayerSchema = new Schema({
     Imagem: { type: String },
-    Cor: {type: String},
+    Cor: { type: String },
     Nome: { type: String, required: true, trim: true, unique: true },
     Raça: { type: String, required: true, trim: true },
     Perícias: {
@@ -93,19 +93,7 @@ const PlayerSchema = new Schema({
     },
     Anotações: { type: String, default: ' ', required: true },
     Lins: { type: Number, default: 0, required: true },
-    Conexões: { type: [String], default: [], required: true },
-    Habilidades: 
-        {
-            'Nome da Habilidade': { type: String, required: true },
-            Descrição: { type: String, required: true },
-        }
-    ,
-    Itens: {
-        type: [{
-            ID: { type: [Schema.Types.ObjectId], required: true },
-            Quantidade: { type: [Number], default: 1, min: 1, required: true },
-        }], default: []
-    }
+    Conexões: { type: [String], default: [], required: true }
 });
 
 const Player = mongoose.models.Player || mongoose.model('Player', PlayerSchema, 'players');
