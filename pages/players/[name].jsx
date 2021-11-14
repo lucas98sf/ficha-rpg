@@ -1,4 +1,6 @@
 import Profile from "../../components/Profile";
+import Script from 'next/script'
+import axios from 'axios';
 
 export async function getServerSideProps({ params }) {
     const name = params.name || null;
@@ -6,6 +8,41 @@ export async function getServerSideProps({ params }) {
     const player = await res.json();
     return { props: { player } };
 }
+const getValueById = (id) => {
+    return document.getElementById(id).value
+}
+
+const getTextById = (id) => {
+    return document.getElementById(id).innerText
+}
+
+async function mudarValorPericia(botaoId, nomePlayer, classePericia, pericia, update) {
+    const botao = document.getElementById(botaoId);
+    botao.disabled = true;
+    const valor = Number(getTextById(pericia)) + Number(update);
+    if (valor >= 1 && valor <= 19) {
+        await updatePlayer(nomePlayer, classePericia, pericia, valor);
+        document.getElementById(pericia).innerText = valor
+    } else alert("chega mano");
+    botao.disabled = false;
+}
+
+async function updatePlayer(nomePlayer, classePericia, pericia, valor) {
+    try {
+        const changes = {
+            Perícias: {
+                [classePericia]: {
+                    [pericia]: valor,
+                },
+            },
+        };
+        await axios.patch(`http://localhost:3000/api/players/${nomePlayer}`, changes);
+        return;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 export default function PlayerPage({ player }) {
     const { Nome, Imagem, Raça, Status, Atributos, Perícias, Resistências } = player;
@@ -40,9 +77,9 @@ export default function PlayerPage({ player }) {
                         <div key={name} className="attributesGrid">
                             <button className="attributeNameFicha">{name}</button>
                             <div className="attributeButtonsFicha">
-                                <button className="attributeUp">+</button>
-                                <div className="attributeValueFicha">{value}</div>
-                                <button className="attributeDown">-</button>
+                                <button className="attributeUp" id={`${name}Up`} onClick={()=> mudarValorPericia(`${name}Up`, Nome, Perícias, name, +1)}>+</button>
+                                <div className="attributeValueFicha" id={`${name}`}>{value}</div>
+                                <button className="attributeDown" id={`${name}Down`} onClick={()=> mudarValorPericia(`${name}Up`, Nome, Perícias, name, -1)}>-</button>
                             </div>
                         </div>
                     )
@@ -54,13 +91,13 @@ export default function PlayerPage({ player }) {
                         ([name, value]) => {
                             return (
                                 <div key={name} className="periciaNameValue">
-                                    <button className="periciaName" id={`${name}`}>
+                                    <button className="periciaName" id={`${name}Button`}>
                                         {name}
                                     </button>
                                     <div className="buttonsGroup" id={`${name}Buttons`}>
-                                        <button className="up" id={`${name}Up`}>+</button>
-                                        <button className="periciaValue"id={`${name}Valor`}>{value}</button>
-                                        <button className="down"id={`${name}Down`}>-</button>
+                                        <button className="up" id={`${name}Up`} onClick={()=> mudarValorPericia(`${name}Up`, Nome, Perícias, name, +1)}>+</button>
+                                        <button className="periciaValue" id={`${name}`}>{value}</button>
+                                        <button className="down"id={`${name}Down`} onClick={()=> mudarValorPericia(`${name}Up`, Nome, Perícias, name, -1)}>-</button>
                                     </div>  
                                 </div>
                             );
@@ -78,4 +115,6 @@ export default function PlayerPage({ player }) {
             </div>
         </center>
     );
+
+    
 }

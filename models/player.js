@@ -72,13 +72,13 @@ const PlayerSchema = new Schema({
         SOR: { type: Number, default: 1, required: true, min: 1, max: 19 },
     },
     Resistências: {
-        Perfurante: { type: Number, default: 0, required: true },
-        Corte: { type: Number, default: 0, required: true },
-        Brusco: { type: Number, default: 0, required: true },
-        Elemental: { type: Number, default: 0, required: true },
-        Veneno: { type: Number, default: 0, required: true },
-        Morte: { type: Number, default: 0, required: true },
-        Magia: { type: Number, default: 0, required: true },
+        Perfurante: { type: String, default: "0", required: true },
+        Corte: { type: String, default: "0", required: true },
+        Brusco: { type: String, default: "0", required: true },
+        Elemental: { type: String, default: "0", required: true },
+        Veneno: { type: String, default: "0", required: true },
+        Morte: { type: String, default: "0", required: true },
+        Magia: { type: String, default: "0", required: true },
     },
     Status:
     {

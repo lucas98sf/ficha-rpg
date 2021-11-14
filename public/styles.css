@@ -270,9 +270,6 @@ body {
 /* OUTRAS COISAS DAS PERICIAS */
 .periciaName{
     grid-column: 1;
-    width: 10vw;
-}
-.periciaName{
     font-family: monospace;
     color: white;
     width: 11vw;
@@ -285,13 +282,13 @@ body {
 .up,.down,.periciaName,.periciaValue{
     padding: 0.1vw;
 }
-#Saltar,#SaltarButtons,
-#Medicina,#MedicinaButtons,
-#Línguas,#LínguasButtons,
-#LockPick,#LockPickButtons,
-#Charme,#CharmeButtons,
-#Shotguns,#ShotgunsButtons,
-#Encontrar,#EncontrarButtons {
+#SaltarButton,#SaltarButtons,
+#MedicinaButton,#MedicinaButtons,
+#LínguasButton,#LínguasButtons,
+#LockPickButton,#LockPickButtons,
+#CharmeButton,#CharmeButtons,
+#ShotgunsButton,#ShotgunsButtons,
+#EncontrarButton,#EncontrarButtons {
     border-bottom: 0.1vw solid white;
 }
 /*  */
@@ -321,9 +318,22 @@ body {
     grid-column: 3;
     grid-row: 3;
 }
-#Percepção{
+#Percepção,#PercepçãoButtons{
     grid-column: 2;
     grid-row: 1;
+}
+#Percepção > *{
+    width: 12vw;
+    color: red;
+}
+#IntuiçãoButton,#EscutarButton,#EncontrarButton{
+    width: 7.5vw;
+}
+#Intuição,#IntuiçãoUp,#IntuiçãoDown,
+#Escutar,#EscutarUp,#EscutarDown,
+#Encontrar,#EncontrarUp,#EncontrarDown
+{
+    width: 1.5vw;
 }
 /*  */
 

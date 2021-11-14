@@ -5,6 +5,7 @@ const ItemSchema = new Schema({
         {
             ID: { type: [Schema.Types.ObjectId], required: true },
             Quantidade: { type: [Number], default: 1, min: 1, required: true },
+            Imagem: { type: {String}},
         },
     ],
     default: [],
