@@ -93,7 +93,24 @@ const PlayerSchema = new Schema({
     },
     Anotações: { type: String, default: ' ', required: true },
     Lins: { type: Number, default: 0, required: true },
-    Conexões: { type: [String], default: [], required: true }
+    Conexões: { type: [String], default: [], required: true },
+    Itens: {
+        type: [
+            {
+                ID: { type: Number, required: true },
+                Quantidade: { type: Number, default: 1, min: 1, required: true }
+            },
+        ],
+        default: [],
+    },
+    Habilidades: {
+        type: [
+            {
+                ID: { type: Number, required: true },
+            },
+        ],
+        default: [],
+    }
 });
 
 const Player = mongoose.models.Player || mongoose.model('Player', PlayerSchema, 'players');

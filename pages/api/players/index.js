@@ -18,7 +18,7 @@ async function playersHandler(req, res) {
     case 'GET':
       try {
         const players = await Player.find();
-        const result = players.map((player) => {
+        const result = players?.map((player) => {
           const player_ = new Player(player);
           return player_.toObject({ virtuals: true });
         });
