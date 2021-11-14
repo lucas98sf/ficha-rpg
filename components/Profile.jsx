@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 export default function Profile({
-    menu = false,
     Nome,
     Imagem,
     Raça,
@@ -11,10 +10,8 @@ export default function Profile({
 }) {
     return (
         <Link
-            className={menu ? "" : "disabled='true"}
             href={`/players/${Nome}`}
-        >
-            
+        >            
             <button className="playerButton" id={`${Nome}Button`} style={{color:`white`,borderColor:`white`}}>
                 <div className="playerNameText" id={`${Nome}Text`} style={{borderColor:`white`}}>{Nome}</div>
                 <div className="playerImg">

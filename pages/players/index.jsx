@@ -13,7 +13,7 @@ export default function PlayerPage({ players }) {
         <div className="playersGrid">
             {players.map((player) => {
                 const { Nome, Imagem, Raça, Status, Atributos, Cor } = player;
-                const props = { menu: true, Nome, Imagem, Raça, Status, Atributos, Cor };
+                const props = { Nome, Imagem, Raça, Status, Atributos, Cor };
                 return <Profile key={Nome} {...props} />;
             })}
         </div>

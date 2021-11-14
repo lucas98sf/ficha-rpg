@@ -21,6 +21,7 @@ async function playerHandler(req, res) {
             break
         case 'PATCH':
             try {
+                console.log(req.body)
                 const player = await Player.findOne(filter);
                 const update = await Player.updateOne(
                     filter,
