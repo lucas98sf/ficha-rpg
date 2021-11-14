@@ -79,7 +79,7 @@ const PlayerSchema = new Schema({
         Veneno: { type: String, default: "0", required: true },
         Morte: { type: String, default: "0", required: true },
         Magia: { type: String, default: "0", required: true },
-    },
+    },a
     Status:
     {
         'Vida Atual': { type: Number, default: 0, required: true, min: 0, max: 999 },
