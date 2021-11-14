@@ -1,3 +1,5 @@
+import { mudarValorAtributo } from "../utils";
+
 export default function Attributes({ Nome, Atributos }) {
     return (
         <div className="attributesFicha">
@@ -10,10 +12,9 @@ export default function Attributes({ Nome, Atributos }) {
                                 className="attributeUp"
                                 id={`${name}Up`}
                                 onClick={() =>
-                                    mudarValorPericia(
+                                    mudarValorAtributo(
                                         `${name}Up`,
                                         Nome,
-                                        type,
                                         name,
                                         +1
                                     )
@@ -28,10 +29,9 @@ export default function Attributes({ Nome, Atributos }) {
                                 className="attributeDown"
                                 id={`${name}Down`}
                                 onClick={() =>
-                                    mudarValorPericia(
+                                    mudarValorAtributo(
                                         `${name}Up`,
                                         Nome,
-                                        type,
                                         name,
                                         -1
                                     )

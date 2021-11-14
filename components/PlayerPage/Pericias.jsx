@@ -1,21 +1,4 @@
-import { getValueById, getTextById, updatePlayer } from "../utils";
-
-async function mudarValorPericia(
-    botaoId,
-    nomePlayer,
-    classePericia,
-    pericia,
-    update
-) {
-    const botao = document.getElementById(botaoId);
-    botao.disabled = true;
-    const valor = Number(getTextById(pericia)) + Number(update);
-    if (valor >= 1 && valor <= 19) {
-        await updatePlayer(nomePlayer, classePericia, pericia, valor);
-        document.getElementById(pericia).innerText = valor;
-    } else alert("chega mano");
-    botao.disabled = false;
-}
+import { mudarValorPericia } from "../utils";
 
 export default function Pericias({ Nome, Perícias }) {
     return (
