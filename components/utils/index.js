@@ -63,10 +63,27 @@ async function updatePlayer(changes, nomePlayer) {
             : window.location.hostname;
     const url = `${window.location.protocol}//${hostname}`;
     // console.log(url);
-    return await axios.patch(
-        `${url}/api/players/${nomePlayer}`,
-        changes
-    );
+    return await axios.patch(`${url}/api/players/${nomePlayer}`, changes);
 }
 
-export { getValueById, getTextById, mudarValorPericia, mudarValorAtributo };
+function tooltipMouse(e, Nome) {
+    var x = e.clientX;
+    var y = e.clientY;
+    const tooltip = document.getElementById(`tooltip${Nome}`);
+    tooltip.style.visibility = "visible";
+    tooltip.style.left = x + 10 + "px";
+    tooltip.style.top = y + 10 + "px";
+}
+function tooltipMouseOut(Nome) {
+    const tooltip = document.getElementById(`tooltip${Nome}`);
+    tooltip.style.visibility = "hidden";
+}
+
+export {
+    getValueById,
+    getTextById,
+    mudarValorPericia,
+    mudarValorAtributo,
+    tooltipMouse,
+    tooltipMouseOut,
+};

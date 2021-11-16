@@ -40,6 +40,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
     return (
         //<div class="grid-container">
         <center>
+            
             <div className="tudo">
                 <Stats {...StatsProps} />
                 <Resistances {...ResistancesProps} />
@@ -47,6 +48,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <Pericias {...PericiasProps} />
                 <Items Itens={Itens} />
                 <Skills Habilidades={Habilidades} />
+                
             </div>
             <ItemsTooltips Itens={Itens} />
         </center>

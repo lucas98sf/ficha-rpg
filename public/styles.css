@@ -446,15 +446,26 @@ body {
     grid-template-columns: repeat(1, 1fr);
     font-size: 1vw;
     grid-column: 1;
-    grid-row: 4;
+    grid-row: 1;
+}
+
+.Item:hover{
+    color: red;
 }
 
 
-.Item:hover~.ItemsTooltips{
-    opacity: 1;
+.itemsTooltips > *{
+    font-size: 0.8vw;
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    color: white;
+    top: 1vw;
+    left: 1vw;
+    width: 15vw;
 }
-.ItemsTooltips{
-    opacity: 0;
+.itemsTooltips > * img{
+    width: 5vw;
 }
 
 

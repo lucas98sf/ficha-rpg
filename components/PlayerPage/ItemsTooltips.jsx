@@ -1,7 +1,6 @@
 export default function ItemsTooltips({ Itens }) {
     return (
-        <div className="itemsTooltips">
-            <h3>Itens</h3>
+        <div className="itemsTooltips" >
             {Itens.map(
                 ({
                     Nome,
@@ -13,7 +12,7 @@ export default function ItemsTooltips({ Itens }) {
                     Quantidade,
                 }) => {
                     return (
-                        <div key={`tooltip-${Nome}`}>
+                        <div key={`tooltip-${Nome}`}  id={`tooltip${Nome}`}>
                             Descrição: {Descrição}
                             {
                                 <div>
