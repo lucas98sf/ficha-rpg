@@ -3,6 +3,8 @@ import {
     Pericias,
     Resistances,
     Stats,
+    Items,
+    Skills,
 } from "../../components/PlayerPage";
 
 export async function getServerSideProps({ params }) {
@@ -42,92 +44,8 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <Resistances {...ResistancesProps} />
                 <Attributes {...AttributesProps} />
                 <Pericias {...PericiasProps} />
-
-                <div className="Items">
-                    <div>
-                        Item
-                        {Itens.map(
-                            ({
-                                Nome,
-                                Descrição,
-                                Imagem,
-                                Dano,
-                                Defesa,
-                                Efeito,
-                                Quantidade,
-                            }) => {
-                                return (
-                                    <div>
-                                        {Nome}
-                                        <br />
-                                        {Descrição}
-                                        <br />
-                                        <img src={Imagem} alt={Nome} />
-                                        <br />
-                                        {Dano}
-                                        <br />
-                                        {Defesa}
-                                        <br />
-                                        {Efeito}
-                                        <br />
-                                        {Quantidade}
-                                    </div>
-                                );
-                            }
-                        )}
-                        <div>Nome</div>
-                        <div>Quantidade</div>
-                    </div>
-                </div>
-                <div className="Skills">
-                    <div>
-                        Skill
-                        {Habilidades.map(
-                            ({
-                                Nome,
-                                Descrição,
-                                Descrição_Aprimorada,
-                                Custo,
-                                Custo_Aprimorado,
-                                Tipo,
-                            }) => {
-                                const descricaoAprimorada =
-                                    Descrição_Aprimorada ? (
-                                        <div>
-                                            <br />
-                                            Descrição aprimorada:
-                                            Descrição_Aprimorada
-                                        </div>
-                                    ) : (
-                                        ""
-                                    );
-                                const custoAprimorado = Custo_Aprimorado ? (
-                                    <div>
-                                        <br />
-                                        Custo aprimorado: Custo_Aprimorado
-                                    </div>
-                                ) : (
-                                    ""
-                                );
-                                return (
-                                    <div>
-                                        {Nome}
-                                        <br />
-                                        {Descrição}
-                                        {descricaoAprimorada}
-                                        <br />
-                                        {Custo}
-                                        {custoAprimorado}
-                                        <br />
-                                        {Tipo}
-                                    </div>
-                                );
-                            }
-                        )}
-                        <div>Nome</div>
-                        <div>Custo</div>
-                    </div>
-                </div>
+                <Items Itens={Itens} />
+                <Skills Habilidades={Habilidades} />
             </div>
         </center>
     );
