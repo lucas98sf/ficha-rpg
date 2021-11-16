@@ -4,7 +4,8 @@
 html,
 body {
     background: #000000;
-    color: red;
+    color: white;
+    font-family: monospace;
 }
 
 /* MENU */
@@ -223,7 +224,7 @@ body {
     display: grid;
     justify-content: center;
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 3/5;
 }
 .periciaType{
     color: white;
@@ -343,7 +344,7 @@ body {
     font-size: 1vw;
     color: white;
     width: 8vw;
-    grid-column: 3;
+    grid-column: 1;
     grid-row: 3;
 }
 .resistancesGrid{
@@ -437,4 +438,20 @@ body {
     font-size: 1vw;
     padding-right: 0.2vw;
     padding-left: 0.2vw;
+}
+
+/* ITEMS */
+.Items{
+    font-size: 1vw;
+    grid-column: 1;
+    grid-row: 4;
+}
+
+
+
+/* SKILLS */
+.Skills{
+    font-size: 1vw;
+    grid-column: 3;
+    grid-row: 4;
 }
