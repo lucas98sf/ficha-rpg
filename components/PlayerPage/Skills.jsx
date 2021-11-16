@@ -1,7 +1,6 @@
 export default function Skills({ Habilidades }) {
     return (
         <div className="Skills">
-            <div>
                 <h3>Habilidades</h3>
                 {Habilidades.map(
                     ({
@@ -13,7 +12,7 @@ export default function Skills({ Habilidades }) {
                         Tipo,
                     }) => {
                         return (
-                            <div>
+                            <div key={Nome}>
                                 Nome: {Nome}<br />
                                 Descrição: {Descrição}<br />
                                 {Descrição_Aprimorada ? (
@@ -42,7 +41,6 @@ export default function Skills({ Habilidades }) {
                         );
                     }
                 )}
-            </div>
         </div>
     );
 }

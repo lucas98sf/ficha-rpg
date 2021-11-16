@@ -442,11 +442,20 @@ body {
 
 /* ITEMS */
 .Items{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     font-size: 1vw;
     grid-column: 1;
     grid-row: 4;
 }
 
+
+.Item:hover~.ItemsTooltips{
+    opacity: 1;
+}
+.ItemsTooltips{
+    opacity: 0;
+}
 
 
 /* SKILLS */

@@ -5,6 +5,7 @@ import {
     Stats,
     Items,
     Skills,
+    ItemsTooltips,
 } from "../../components/PlayerPage";
 
 export async function getServerSideProps({ params }) {
@@ -47,6 +48,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <Items Itens={Itens} />
                 <Skills Habilidades={Habilidades} />
             </div>
+            <ItemsTooltips Itens={Itens} />
         </center>
     );
 }
