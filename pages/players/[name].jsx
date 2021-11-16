@@ -9,17 +9,26 @@ export async function getServerSideProps({ params }) {
     const name = params.name || null;
     const res = await fetch(`http://localhost:3000/api/players/${name}`);
     const player = await res.json();
-    for (const item_ of player.Itens) {
-        const { ID, Quantidade } = item_;
+
+    const items = [],
+        skills = [];
+    for (const { ID, Quantidade } of player.Itens) {
+        if (!ID) continue;
         const res = await fetch(`http://localhost:3000/api/items/${ID}`);
         const item = await res.json();
-        player.Itens.push({ ...item, Quantidade });
+        items.push({ ...item, Quantidade, ID });
     }
-    return { props: { player } };
+    for (const { ID } of player.Habilidades) {
+        if (!ID) continue;
+        const res = await fetch(`http://localhost:3000/api/skills/${ID}`);
+        let skill = await res.json();
+        skills.push({ ...skill, ID });
+    }
+    return { props: { player, Itens: items, Habilidades: skills } };
 }
 
-export default function PlayerPage({ player }) {
-    const { Nome, Imagem, Raça, Status, Atributos, Perícias, Resistências, Itens } =
+export default function PlayerPage({ player, Itens, Habilidades }) {
+    const { Nome, Imagem, Raça, Status, Atributos, Perícias, Resistências } =
         player;
     const StatsProps = { Nome, Imagem, Raça, Status };
     const ResistancesProps = { Resistências };
@@ -35,20 +44,86 @@ export default function PlayerPage({ player }) {
                 <Pericias {...PericiasProps} />
 
                 <div className="Items">
-                    <div>Item
-                        {Itens.map((item)=>{
-                            return(
-                                <div>
-                                    {item}
-                                </div>
-                            )
-                        })}
+                    <div>
+                        Item
+                        {Itens.map(
+                            ({
+                                Nome,
+                                Descrição,
+                                Imagem,
+                                Dano,
+                                Defesa,
+                                Efeito,
+                                Quantidade,
+                            }) => {
+                                return (
+                                    <div>
+                                        {Nome}
+                                        <br />
+                                        {Descrição}
+                                        <br />
+                                        <img src={Imagem} alt={Nome} />
+                                        <br />
+                                        {Dano}
+                                        <br />
+                                        {Defesa}
+                                        <br />
+                                        {Efeito}
+                                        <br />
+                                        {Quantidade}
+                                    </div>
+                                );
+                            }
+                        )}
                         <div>Nome</div>
                         <div>Quantidade</div>
                     </div>
                 </div>
                 <div className="Skills">
-                    <div>Skill
+                    <div>
+                        Skill
+                        {Habilidades.map(
+                            ({
+                                Nome,
+                                Descrição,
+                                Descrição_Aprimorada,
+                                Custo,
+                                Custo_Aprimorado,
+                                Tipo,
+                            }) => {
+                                const descricaoAprimorada =
+                                    Descrição_Aprimorada ? (
+                                        <div>
+                                            <br />
+                                            Descrição aprimorada:
+                                            Descrição_Aprimorada
+                                        </div>
+                                    ) : (
+                                        ""
+                                    );
+                                const custoAprimorado = Custo_Aprimorado ? (
+                                    <div>
+                                        <br />
+                                        Custo aprimorado: Custo_Aprimorado
+                                    </div>
+                                ) : (
+                                    ""
+                                );
+                                return (
+                                    <div>
+                                        {Nome}
+                                        <br />
+                                        {Descrição}
+                                        {descricaoAprimorada}
+                                        <br />
+                                        {Custo}
+                                        {custoAprimorado}
+                                        <br />
+                                        {Tipo}
+                                    </div>
+                                );
+                            }
+                        )}
                         <div>Nome</div>
                         <div>Custo</div>
                     </div>

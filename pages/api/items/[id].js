@@ -7,7 +7,6 @@ async function itemHandler(req, res) {
         query: { id },
         method,
     } = req;
-    console.log(id);
     const filter = { item_id: Number(id) };
 
     switch (method) {
