@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
     Attributes,
     Pericias,
@@ -8,8 +9,6 @@ import {
     ItemsTooltips,
     SkillsTooltips,
 } from "../../components/PlayerPage";
-
-import D20 from './images/D20.jpg';
 
 export async function getServerSideProps({ params }) {
     const name = params.name || null;
@@ -43,7 +42,6 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
     return (
         //<div class="grid-container">
         <center>
-            
             <div className="tudo">
                 <Stats {...StatsProps} />
                 <Resistances {...ResistancesProps} />
@@ -54,10 +52,10 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
             <ItemsTooltips Itens={Itens} />
-            
+
             <div id="containerD20">
                 <div id="dadoTexto">dadotexto</div>
-                <img src={D20} alt="D20"/>
+                <Image src="/images/D20.png" alt="D20" layout="fill" />
                 <div id="resultadoTexto">resultadotexto</div>
             </div>
         </center>
