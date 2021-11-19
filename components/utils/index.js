@@ -8,6 +8,63 @@ const getTextById = (id) => {
     return document.getElementById(id).innerText;
 };
 
+async function mudarValorSimples(
+    nomePlayer,
+    item,
+){
+    const valor = Number(getValueById(item));
+    const changes = {
+        [item]: valor,
+    };
+
+    updatePlayer(changes, nomePlayer).then((result)=>{
+        console.log(result);
+    }).catch((err)=> alert("to bem nao"));
+}
+
+async function mudarValorStat(
+    nomePlayer,
+    stat,
+){
+    console.log(stat);
+    const valor = (Number(getValueById(stat)))
+    const changes = {
+        Status:{
+            [stat]: valor,
+        },
+    };
+    updatePlayer(changes, nomePlayer).then((result) => {
+        console.log(result);
+    }).catch((err) => alert("to bem nao"));
+}
+
+async function mudarValorResistencia(
+    botaoid,
+    nomePlayer,
+    resistencia,
+    update
+){
+    const botao = document.getElementById(botaoid);
+    console.log(nomePlayer);
+    botao.disabled = true;
+    if(isNaN(Number(getTextById(resistencia)))){
+        botao.disabled = false;
+        return;
+    }
+    const valor = Number(getTextById(resistencia)) + Number(update);
+    const changes = {
+        Resistências: {
+            [resistencia]: String(valor),
+        },
+    };
+
+    updatePlayer(changes, nomePlayer).then((result)=>{
+        console.log(result);
+        document.getElementById(resistencia).innerText = valor;
+    }).catch((err)=> alert("to bem nao"));
+    botao.disabled = false;
+}
+
 async function mudarValorPericia(
     botaoId,
     nomePlayer,
@@ -54,6 +111,9 @@ async function mudarValorAtributo(botaoId, nomePlayer, atributo, update) {
     } else alert("chega mano");
     botao.disabled = false;
 }
+
+
+
 async function updatePlayer(changes, nomePlayer) {
     const hostname =
         window.location.hostname === "localhost"
@@ -67,9 +127,10 @@ async function updatePlayer(changes, nomePlayer) {
 const timer = ms => new Promise(res => setTimeout(res, ms))
 let rolandoDado = false
 async function RollD20(nomePericia) {
-    const dadoTexto = document.getElementById("dadoTexto")
+    const dadoTexto = document.getElementById("numeroRolado")
     const resultadoTexto = document.getElementById("resultadoTexto")
     const divD20 = document.getElementById("containerD20")
+    const nomeDaPericia= document.getElementById("nomePericia")
     let textoResultadoTeste 
     const D20 = Math.floor(Math.random() * 20 + 1)
 
@@ -83,6 +144,7 @@ async function RollD20(nomePericia) {
         rolandoDado = true
         console.log(rolandoDado)
         divD20.style.visibility = 'visible';
+        nomeDaPericia.innerText = nomePericia;
         for (let i = 0; i <=15; i++){
             let dado20 = Math.floor(Math.random() * 20 + 1)
             dadoTexto.innerHTML = `${dado20}`
@@ -160,4 +222,7 @@ export {
     tooltipMouse,
     tooltipMouseOut,
     RollD20,
+    mudarValorResistencia,
+    mudarValorSimples,
+    mudarValorStat,
 };

@@ -1,4 +1,5 @@
 import { mudarValorAtributo } from "../utils";
+import { RollD20 } from "../utils";
 
 export default function Attributes({ Nome, Atributos }) {
     return (
@@ -6,7 +7,7 @@ export default function Attributes({ Nome, Atributos }) {
             {Object.entries(Atributos).map(([name, value]) => {
                 return (
                     <div key={name} className="attributesGrid">
-                        <button className="attributeNameFicha">{name}</button>
+                        <button className="attributeNameFicha" onClick={()=> RollD20(name)}>{name}</button>
                         <div className="attributeButtonsFicha">
                             <button
                                 className="attributeUp"

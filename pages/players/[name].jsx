@@ -33,10 +33,10 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function PlayerPage({ player, Itens, Habilidades }) {
-    const { Nome, Imagem, Raça, Status, Atributos, Perícias, Resistências } =
+    const { Nome, Imagem, Raça, Status, Atributos, Perícias, Resistências, Lins, Exp } =
         player;
-    const StatsProps = { Nome, Imagem, Raça, Status };
-    const ResistancesProps = { Resistências };
+    const StatsProps = { Nome, Imagem, Raça, Status, Lins, Exp };
+    const ResistancesProps = { Nome, Resistências };
     const AttributesProps = { Nome, Atributos };
     const PericiasProps = { Nome, Perícias };
     return (
@@ -52,12 +52,15 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
             <ItemsTooltips Itens={Itens} />
-
             <div id="containerD20">
-                <div id="dadoTexto">dadotexto</div>
-                <Image src="/images/D20.png" alt="D20" layout="fill" />
-                <div id="resultadoTexto">resultadotexto</div>
+                <div id="nomePericia">nomepericia</div>
+                <div id="numeroRolado">dadotexto</div>
+                <div id="dadoImg">
+                    <Image src="/images/D20.png" alt="D20" width={`200vw`} height={`200vw`}/>
+                </div>
             </div>
+            <div id="resultadoTexto"></div>
+
         </center>
     );
 }
