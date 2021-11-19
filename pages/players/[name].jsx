@@ -6,7 +6,10 @@ import {
     Items,
     Skills,
     ItemsTooltips,
+    SkillsTooltips,
 } from "../../components/PlayerPage";
+
+import D20 from './images/D20.jpg';
 
 export async function getServerSideProps({ params }) {
     const name = params.name || null;
@@ -48,9 +51,15 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <Pericias {...PericiasProps} />
                 <Items Itens={Itens} />
                 <Skills Habilidades={Habilidades} />
-                
             </div>
+            <SkillsTooltips Habilidades={Habilidades} />
             <ItemsTooltips Itens={Itens} />
+            
+            <div id="containerD20">
+                <div id="dadoTexto">dadotexto</div>
+                <img src={D20} alt="D20"/>
+                <div id="resultadoTexto">resultadotexto</div>
+            </div>
         </center>
     );
 }

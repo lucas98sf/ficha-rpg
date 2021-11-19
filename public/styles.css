@@ -443,19 +443,88 @@ body {
 /* ITEMS */
 .Items{
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    padding: 0px;
+    grid-template-columns: repeat(1,1fr);
     font-size: 1vw;
+    align-content: center;
     grid-column: 1;
     grid-row: 1;
 }
 
-.Item:hover{
-    color: red;
+.Item{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-bottom: 0.1vw solid white;
+    width: 18.3vw;
 }
 
+.itemName{
+    border: 0.1vw solid white;
+    padding: 0.1vw;
+    border-bottom: 0px;
+    grid-column: 1;
+    width: 13vw;
+}
+.itemName:hover,.plusItem:hover,.minusItem:hover{
+    color: black;
+    background-color: white;
+}
+.plusItem:active,.minusItem:active{
+    background-color: grey;
+}
+
+.itemQuantity{
+    width: 1.5vw;
+    padding: 0.1vw;
+    border: 0.1vw solid white;
+    border-bottom: 0px;
+    grid-column: 3;
+}
+.minusItem{
+    grid-column: 4;
+}
+
+.plusItem,.minusItem{
+    width: 1.5vw;
+    color: white;
+    background-color: black;
+    border: 0.1vw solid white;
+    border-left: 0px;
+    border-bottom: 0px;
+}
+.plusItem{
+    border-right: none;
+    grid-column: 2;
+}
+
+.addItem{
+    border: 0.1vw solid white;
+    background-color: black;
+    color: white;
+}
+.addItem:hover{
+    color: black;
+    background-color: white;
+}
+.addItem:active{
+    background-color: grey;
+}
+
+/* ITENS TOOLTIP */
+.tooltip{
+    border: 0.1vw solid white;
+}
+.itemDamage,.itemDefense,.itemEffect,.itemNameTooltip{
+    padding: 0.1vw;
+    border-bottom: 0.1vw solid white;
+}
+.itemDescription{
+    padding: 0.1vw;
+    border-top: 0.1vw solid white;
+}
 
 .itemsTooltips > *{
-    font-size: 0.8vw;
+    font-size: 1vw;
     visibility: hidden;
     position: absolute;
     background-color: black;
@@ -465,13 +534,100 @@ body {
     width: 15vw;
 }
 .itemsTooltips > * img{
-    width: 5vw;
 }
-
 
 /* SKILLS */
 .Skills{
+    display: grid;
+    align-content: center;
     font-size: 1vw;
     grid-column: 3;
+    grid-row: 1;
+}
+.skill{
+    grid-template-columns: repeat(2,1fr);
+    border: 0.1vw solid white;
+    width: 13vw;
+    white-space: nowrap;
+}
+.skillName{
+    grid-column: 1;
+    width: 13vw;
+}
+.skillName:hover{
+    color: black;
+    background-color: white;
+}
+
+.SkillsTooltips > *{
+    font-size: 1vw;
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    color: white;
+    top: 1vw;
+    left: 1vw;
+    width: 15vw;
+}
+.skillTooltip{
+    display: grid;
+    border: 0.1vw solid white;
+}
+.skillCost{
+    grid-row: 1;
+}
+.skillDescription{
+    grid-row: 2;
+}
+.skillCost2{
+    grid-row: 3;
+}
+.skillDescription2{
     grid-row: 4;
+}
+.skillType{
+    grid-row: 5;
+}
+.skillCost,.skillDescription,.skillCost2,.skillDescription2{
+    border-bottom: 0.1vw solid white;
+    padding: 0.2vw;
+}
+
+.skillType{
+    border-top: 0.1vw solid white;
+}
+.improved{
+    width: fit-content;
+    border-bottom: 0.1vw solid white;
+}
+
+#typeDano{
+    color: red;
+}
+#typeCura{
+    color: rgb(0, 255, 0);
+}
+#typeUtilidade{
+    color: blue;
+}
+#typeCC{
+    color: #c05600;
+}
+#typeBuff{
+    color: rgb(255, 0, 170);
+}
+#typePassiva{
+    color: grey;
+}
+#typeMovimento{
+    color: yellow;
+}
+#typeReação{
+    color: rgb(162, 0, 255);
+}
+
+#containerD20{
+    position: fixed;
+    left: 50%;
+    top: 50%;
 }

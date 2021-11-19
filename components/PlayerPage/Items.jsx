@@ -6,17 +6,21 @@ export default function Items({ Itens }) {
             <h3>Itens</h3>
             {Itens.map(({ Nome, Quantidade }) => {
                 return (
-                    <div
-                        key={Nome}
-                        className="Item"
-                        onMouseMove={(event) => tooltipMouse(event, Nome)}
-                        onMouseOut={() => tooltipMouseOut(Nome)}
-                    >
-                        <div>{Nome}</div>
-                        <div>{Quantidade}</div>
+                    <div key={Nome} className="Item">
+                        <div
+                            className="itemName"
+                            onMouseMove={(event) => tooltipMouse(event, Nome)}
+                            onMouseOut={() => tooltipMouseOut(Nome)}
+                        >
+                            {Nome}
+                        </div>
+                        <button className="plusItem">+</button>
+                        <div className="itemQuantity">{Quantidade}</div>
+                        <button className="minusItem">-</button>
                     </div>
                 );
             })}
+            <button className="addItem">+</button>
         </div>
     );
 }

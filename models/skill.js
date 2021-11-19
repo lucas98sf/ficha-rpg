@@ -5,18 +5,19 @@ const SkillSchema = new Schema({
     Nome: { type: String, required: true, trim: true, unique: true },
     Descrição: { type: String, required: true },
     Descrição_Aprimorada: { type: String },
-    Custo: { type: Number },
-    Custo_Aprimorado: { type: Number },
+    Custo: { type: String },
+    Custo_Aprimorado: { type: String },
     Tipo: {
         type: String,
         enum: [
-            "Dano",
-            "Cura",
-            "Utilidade",
-            "CC",
-            "Buff",
-            "Passiva",
-            "Movimento",
+            "Dano", // vermelho
+            "Cura", // verde
+            "Utilidade", // azul
+            "CC", // #874400
+            "Buff", // rosa
+            "Passiva", // cinza
+            "Movimento", // amarelo
+            "Reação", // roxo
         ],
         required: true,
     },

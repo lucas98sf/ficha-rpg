@@ -1,4 +1,5 @@
 import { mudarValorPericia } from "../utils";
+import { RollD20 } from "../utils";
 
 export default function Pericias({ Nome, Perícias }) {
     return (
@@ -10,6 +11,7 @@ export default function Pericias({ Nome, Perícias }) {
                             <button
                                 className="periciaName"
                                 id={`${name}Button`}
+                                onClick={()=> RollD20(name)}
                             >
                                 {name}
                             </button>

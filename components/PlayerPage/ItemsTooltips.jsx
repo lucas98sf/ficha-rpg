@@ -12,17 +12,17 @@ export default function ItemsTooltips({ Itens }) {
                     Quantidade,
                 }) => {
                     return (
-                        <div key={`tooltip-${Nome}`}  id={`tooltip${Nome}`}>
-                            Descrição: {Descrição}
+                        <div key={`tooltip-${Nome}`}  id={`tooltip${Nome}`} className="tooltip">
+                            <div className="itemNameTooltip">{Nome}</div>
                             {
                                 <div>
-                                    {Dano ? <div>Dano: {Dano}</div> : ""}
-                                    {Defesa ? <div>Defesa: {Defesa}</div> : ""}
-                                    {Efeito ? <div>Efeito: {Efeito}</div> : ""}
+                                    {Dano ? <div className="itemDamage">Dano: {Dano}</div> : ""}
+                                    {Defesa ? <div className="itemDefense">Defesa: {Defesa}</div> : ""}
+                                    {Efeito ? <div className="itemEffect">Efeito: {Efeito}</div> : ""}
                                 </div>
                             }
-                            <br />
                             <img src={Imagem} alt={Nome} />
+                            <div className="itemDescription">{Descrição}</div>
                         </div>
                     );
                 }
