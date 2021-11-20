@@ -93,6 +93,7 @@ const PlayerSchema = new Schema({
     },
     Anotações: { type: String, default: ' ', required: true },
     Lins: { type: Number, default: 0, required: true },
+    Exp: { type: Number, default: 0, required: true },
     Conexões: { type: [String], default: [], required: true },
     Itens: {
         type: [
