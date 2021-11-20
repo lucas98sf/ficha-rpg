@@ -92,7 +92,7 @@ body {
     padding-right: 0.02vw;
 }
 /*  */
-.vidaAtual,.vidaMaxima,.sanidadeAtual,.sanidadeMaxima,.magiaAtual,.magiaMaxima{
+#VidaAtual,#VidaMáxima,#SanidadeAtual,#SanidadeMáxima,#MagiaAtual,#MagiaMáxima{
     font-family: monospace;
     font-size: 1.3vw;
     width: 2.1vw;
@@ -101,25 +101,12 @@ body {
     color: white;
     border: none;
 }
-.vidaAtual:focus,.vidaMaxima:focus,.sanidadeAtual:focus,.sanidadeMaxima:focus,.magiaAtual:focus,.magiaMaxima:focus{
+#VidaAtual:focus,#VidaMáxima:focus,#SanidadeAtual:focus,#SanidadeMáxima:focus,#MagiaAtual:focus,#MagiaMáxima:focus{
     outline: none;
 }
-.vidaBorda,.sanidadeBorda,.magiaBorda{
-    border-top: 0.1vw solid white;
-}
+
 /* ITENS NO GRID DE STATS */
-.playerHealthText{
-    grid-column: 1;
-    grid-row: 1;
-}
-.playerSanityText{
-    grid-column: 3;
-    grid-row: 1;
-}
-.playerMagicText{
-    grid-column: 2;
-    grid-row: 1;
-}
+
 /*  */
 /* CONFIGURAÇÕES PERSONALIZADAS POR PERSONAGEM DOS BOTOES */
 /* MIRKHALO */
@@ -219,31 +206,54 @@ body {
 .playerNameFicha,.playerImgFicha{
     grid-column: 1;
 }
-.playerHealthFicha,.playerSanityFicha,.playerMagicFicha{
+.PV,.PS,.PM{
     grid-row: 2;
 }
 .playerImgFicha{
     grid-row: 2/5;
     width: 15vw;
 }
-.playerHealthFicha{
+.PV{
     grid-column: 2;
 }
-.playerSanityFicha{
+.PS{
     grid-column: 3;
 }
-.playerMagicFicha{
+.PM{
     grid-column: 4;
 }
-.playerSanityFicha,.playerMagicFicha,.playerHealthFicha{
+.PS,.PM,.PV{
+    display: grid;
     border: 0.1vw solid white;
-    width: fit-content;
+    width: 6vw;
+    grid-template-columns: 1fr 10% 1fr;
     justify-content: center;
+    align-items: center;
     text-align: center;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
     font-size: 1.3vw;
 }
+.titleStat{
+    border-bottom: 0.1vw solid white;
+    grid-column: 1/4;
+    grid-row: 1;
+}
+.barraStat{
+    grid-column: 2;
+    grid-row: 2;
+}
+.VidaAtual,.SanidadeAtual,.MagiaAtual{
+    grid-column: 1;
+    grid-row: 2;
+}
+.VidaMáxima,.SanidadeMáxima,.MagiaMáxima{
+    grid-column: 3;
+    grid-row: 2;
+}
+
+
+
 
 .lins{
     font-size: 1vw;

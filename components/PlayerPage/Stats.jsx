@@ -6,102 +6,33 @@ export default function Stats({ Nome, Imagem, Raça, Status, Lins, Exp }) {
         <div className="centro">
             <div className="playerNameFicha">{Nome}</div>
             <img className="playerImgFicha" src={Imagem}></img>
-            <div className="playerHealthFicha">
-                PV
-                <div className="vidaBorda">
-                    <input
-                        type="text"
-                        className="vidaAtual"
-                        id={Object.keys(Status)[0]}
-                        maxLength="3"
-                        defaultValue={Status["Vida Atual"]}
-                        onKeyPress={(event) => {
-                            if (!/[0-9]/.test(event.key)) {
-                                event.preventDefault();
-                            }
-                        }}
-                        onKeyUp={() => mudarValorStat(Nome, Object.keys(Status)[0])}
-                    />
-                    /
-                    <input
-                        type="text"
-                        className="vidaMaxima"
-                        id={Object.keys(Status)[1]}
-                        maxLength="3"
-                        defaultValue={Status["Vida Máxima"]}
-                        onKeyPress={(event) => {
-                            if (!/[0-9]/.test(event.key)) {
-                                event.preventDefault();
-                            }
-                        }}
-                        onKeyUp={() => mudarValorStat(Nome, Object.keys(Status)[1])}
-                    />
-                </div>
-            </div>
-            <div className="playerSanityFicha">
-                PS
-                <div className="sanidadeBorda">
-                    <input
-                            type="text"
-                            className="sanidadeAtual"
-                            id={Object.keys(Status)[2]}
+
+            {Object.entries(Status).map(([type, stat]) => {
+                const values = Object.entries(stat).map(([name, value]) => {
+                    return(
+                        <div key={name} className={`${name}`}>
+                            <input type="text"
+                            className = {`${name}Input`}
+                            id={name}
                             maxLength="3"
-                            defaultValue={Status["Sanidade Atual"]}
-                            onKeyPress={(event) => {
+                            defaultValue={value}
+                            onKeyPress={(event)=>{
                                 if (!/[0-9]/.test(event.key)) {
                                     event.preventDefault();
                                 }
                             }}
-                            onKeyUp={() => mudarValorStat(Nome, Object.keys(Status)[2])}
-                    />
-                    /
-                    <input
-                            type="text"
-                            className="sanidadeMaxima"
-                            id={Object.keys(Status)[3]}
-                            maxLength="3"
-                            defaultValue={Status["Sanidade Máxima"]}
-                            onKeyPress={(event) => {
-                                if (!/[0-9]/.test(event.key)) {
-                                    event.preventDefault();
-                                }
-                            }}
-                            onKeyUp={() => mudarValorStat(Nome, Object.keys(Status)[3])}
-                        />
-                </div>
-            </div>
-            <div className="playerMagicFicha">
-                PM
-                <div className="magiaBorda"> 
-                    <input
-                            type="text"
-                            className="magiaAtual"
-                            id={Object.keys(Status)[4]}
-                            maxLength="3"
-                            defaultValue={Status["Magia Atual"]}
-                            onKeyPress={(event) => {
-                                if (!/[0-9]/.test(event.key)) {
-                                    event.preventDefault();
-                                }
-                            }}
-                            onKeyUp={() => mudarValorStat(Nome, Object.keys(Status)[4])}
-                    />
-                    /
-                    <input
-                            type="text"
-                            className="magiaMaxima"
-                            id={Object.keys(Status)[5]}
-                            maxLength="3"
-                            defaultValue={Status["Magia Máxima"]}
-                            onKeyPress={(event) => {
-                                if (!/[0-9]/.test(event.key)) {
-                                    event.preventDefault();
-                                }
-                            }}
-                            onKeyUp={() => mudarValorStat(Nome, Object.keys(Status)[5])}
-                        />
-                </div>
-            </div>
+                            onKeyUp={() => mudarValorStat(Nome, type, name)}/>
+                        </div>
+                    )
+                })
+                return(
+                    <div key={type} className={`${type}`}>
+                        <div className="titleStat">{type}</div>
+                        <div className="barraStat">/</div>
+                        {values}
+                    </div>
+                )
+            })}
             <div className="lins">
                 Lins
                 <input

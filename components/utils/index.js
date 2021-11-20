@@ -21,12 +21,14 @@ async function mudarValorSimples(nomePlayer, item) {
         .catch((err) => alert("to bem nao"));
 }
 
-async function mudarValorStat(nomePlayer, stat) {
+async function mudarValorStat(nomePlayer,tipo, stat) {
     // console.log(stat);
     const valor = Number(getValueById(stat));
     const changes = {
         Status: {
-            [stat]: valor,
+            [tipo]: {           
+                [stat]: valor,
+            },
         },
     };
     updatePlayer(changes, nomePlayer)

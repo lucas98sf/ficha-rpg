@@ -82,14 +82,18 @@ const PlayerSchema = new Schema({
     },
     Status:
     {
-        'Vida Atual': { type: Number, default: 0, required: true, min: 0, max: 999 },
-        'Vida Máxima': { type: Number, default: 0, required: true, min: 0, max: 999 },
-        'Sanidade Atual': { type: Number, default: 0, required: true, min: 0, max: 999 },
-        'Sanidade Máxima': { type: Number, default: 0, required: true, min: 0, max: 999 },
-        'Magia Atual': { type: Number, default: 0, required: true, min: 0, max: 999 },
-        'Magia Máxima': { type: Number, default: 0, required: true, min: 0, max: 999 },
-        'Fadiga Atual': { type: Number, default: 0, min: 0, max: 999 },
-        'Fadiga Máxima': { type: Number, default: 0, min: 0, max: 999 },
+        PV:{
+            'VidaAtual': { type: Number, default: 0, required: true, min: 0, max: 999 },
+            'VidaMáxima': { type: Number, default: 0, required: true, min: 0, max: 999 },
+        },
+        PS:{
+            'SanidadeAtual': { type: Number, default: 0, required: true, min: 0, max: 999 },
+            'SanidadeMáxima': { type: Number, default: 0, required: true, min: 0, max: 999 },
+        },
+        PM:{
+            'MagiaAtual': { type: Number, default: 0, required: true, min: 0, max: 999 },
+            'MagiaMáxima': { type: Number, default: 0, required: true, min: 0, max: 999 },
+        },
     },
     Anotações: { type: String, default: ' ', required: true },
     Lins: { type: Number, default: 0, required: true },
