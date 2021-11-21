@@ -12,23 +12,35 @@ export default function Profile({
         <Link
             href={`/players/${Nome}`}
         >            
-            <button className="playerButton" id={`${Nome}Button`} style={{color:`white`,borderColor:`white`}}>
+            <button  className="playerButton" id={`${Nome}Button`} style={{color:`white`,borderColor:`white`}}>
                 <div className="playerNameText" id={`${Nome}Text`} style={{borderColor:`white`}}>{Nome}</div>
                 <div className="playerImg">
                     <img className="playerImg" src={Imagem}></img>
                 </div>
                 {/* <div className="playerRaceText">{Raça}</div> */}
-                <div className="playerStatsText" id={`status${Nome}Text`}>
-                    <div className="playerHealthText" id={`health${Nome}Text`}>
-                        PV<br />{Status["Vida Atual"]}/{Status["Vida Máxima"]}
+                {Object.entries(Status).map(([type, stat]) => {
+                const values = Object.entries(stat).map(([name, value]) => {
+                    return(
+                        <div key={name} className={`${name}Profile`}>
+                            <div
+                            
+                            className = {`${name}InputProfile`}
+                            id={`${name}Profile`}>
+                                {value}
+                            </div>
+                        </div>
+                    )
+                })
+                return(
+                    <div className="statsProfile">
+                    <div key={type} className={`${type}Profile`}>
+                        <div className="titleStatProfile">{type}</div>
+                        <div className="barraStat">/</div>
+                        {values}
                     </div>
-                    <div className="playerSanityText" id={`sanity${Nome}Text`}>
-                        PS<br />{Status["Sanidade Atual"]}/{Status["Sanidade Máxima"]}
                     </div>
-                    <div className="playerMagicText" id={`magic${Nome}Text`}>
-                        PM<br />{Status["Magia Atual"]}/{Status["Magia Máxima"]}
-                    </div>
-                </div>
+                )
+                })}
                 <div
                     className="playerAttributesText"
                     id={`attributes${Nome}Text`}

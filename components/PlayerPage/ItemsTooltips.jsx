@@ -21,7 +21,7 @@ export default function ItemsTooltips({ Itens }) {
                                     {Efeito ? <div className="itemEffect">Efeito: {Efeito}</div> : ""}
                                 </div>
                             }
-                            <img src={Imagem} alt={Nome} />
+                            {Imagem ?  <img src={Imagem} alt={Nome} />: ""}
                             <div className="itemDescription">{Descrição}</div>
                         </div>
                     );

@@ -1,10 +1,11 @@
-import { tooltipMouse, tooltipMouseOut } from "../utils";
+import { mudarQuantidadeItem, tooltipMouse, tooltipMouseOut } from "../utils";
 
-export default function Items({ Itens }) {
+export default function Itens({ Nome, Itens }) {
+    const playerName = Nome;
     return (
         <div className="Items">
             <h3>Itens</h3>
-            {Itens.map(({ Nome, Quantidade }) => {
+            {Itens.map(({ Nome, Quantidade, ID },index) => {
                 return (
                     <div key={Nome} className="Item">
                         <div
@@ -14,13 +15,14 @@ export default function Items({ Itens }) {
                         >
                             {Nome}
                         </div>
-                        <button className="plusItem">+</button>
-                        <div className="itemQuantity">{Quantidade}</div>
-                        <button className="minusItem">-</button>
+                        <button className="plusItem" onClick={()=> mudarQuantidadeItem(playerName, index, ID, +1)}>+</button>
+                        <div className="itemQuantity" id={ID}>{Quantidade}</div>
+                        <button className="minusItem" onClick={()=> mudarQuantidadeItem(playerName, index, ID, -1)}>-</button>
                     </div>
                 );
             })}
-            <button className="addItem">+</button>
+            {/* <input type="text" />
+            <button className="addItem">+</button> */}
         </div>
     );
 }

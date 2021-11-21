@@ -1,5 +1,4 @@
-import { mudarValorPericia } from "../utils";
-import { RollD20 } from "../utils";
+import { mudarValorPericia, RollD20 } from "../utils";
 
 export default function Pericias({ Nome, Perícias }) {
     return (

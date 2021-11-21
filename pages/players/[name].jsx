@@ -1,3 +1,5 @@
+import { rolarMultiDados, updateAnotacoes } from "../../components/utils";
+
 import Image from "next/image";
 import {
     Attributes,
@@ -33,12 +35,13 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function PlayerPage({ player, Itens, Habilidades }) {
-    const { Nome, Imagem, Raça, Status, Atributos, Perícias, Resistências, Lins, Exp } =
+    const { Nome, Imagem, Raça, Status, Atributos, Perícias, Resistências, Lins, Exp, Anotações } =
         player;
     const StatsProps = { Nome, Imagem, Raça, Status, Lins, Exp };
     const ResistancesProps = { Nome, Resistências };
     const AttributesProps = { Nome, Atributos };
     const PericiasProps = { Nome, Perícias };
+    const ItemsProps = {Nome, Itens };
     return (
         //<div class="grid-container">
         <center>
@@ -47,8 +50,19 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <Resistances {...ResistancesProps} />
                 <Attributes {...AttributesProps} />
                 <Pericias {...PericiasProps} />
-                <Items Itens={Itens} />
+                <Items {...ItemsProps} />
                 <Skills Habilidades={Habilidades} />
+                <div className="multidados">
+                    <input type="text" className="" id="inputMultiDados" />
+                    <div id="textTipoDado"></div>
+                    <div id="textResultDado"></div>
+                    <div id="totalDados"></div>
+                    <button className="botaoMultiDados" onClick={()=> rolarMultiDados()}>Rolar</button>
+                </div>
+                <div className="anotações">
+                    Anotações
+                    <textarea type="text" defaultValue={Anotações} id="Anotações" className="anotaçõesInput" onKeyUp={()=> updateAnotacoes(Nome)}/>
+                </div>
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
             <ItemsTooltips Itens={Itens} />
@@ -60,7 +74,6 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 </div>
             </div>
             <div id="resultadoTexto"></div>
-
         </center>
     );
 }

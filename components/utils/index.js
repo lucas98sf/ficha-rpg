@@ -1,4 +1,5 @@
 import axios from "axios";
+import { update } from "lodash";
 
 const getValueById = (id) => {
     return document.getElementById(id).value;
@@ -7,6 +8,70 @@ const getValueById = (id) => {
 const getTextById = (id) => {
     return document.getElementById(id).innerText;
 };
+
+
+function rolarMultiDados(){
+    const inputMultiDados = getValueById("inputMultiDados")
+    const textoEscreverDados = document.getElementById("textTipoDado")
+    const textoResultDado = document.getElementById("textResultDado")
+    const total = document.getElementById("totalDados")
+
+    const splitDados = inputMultiDados.split("+")
+    const dados = splitDados.map(conjuntoDados => conjuntoDados.split("d"))
+
+    const results = { }
+
+    textoEscreverDados.innerText = ""
+    textoResultDado.innerText = ""
+    total.innerText = ""
+    for(let [quant, dado] of dados){
+        let resultsDado = []
+        for(let i = 0; i < quant; i++){
+            const result = Math.floor(Math.random() * dado + 1)
+            resultsDado.push(result)
+        }
+        const tipoDado = "D" + dado
+        results[tipoDado] = resultsDado
+    }
+
+
+    for(let result of Object.entries(results)){
+        const tipoDado = result[0]
+        const resultadosDados = result[1]
+        const sum = result[1].reduce(add, 0)
+        function add(accumulator, a) {
+            return accumulator + a;
+        }
+
+        total.innerText += sum + "=" + tipoDado + "/";
+        
+
+        for(let resultadoDado of resultadosDados){
+            escreverDados(tipoDado, resultadoDado)
+        }
+
+    }
+
+    function escreverDados(dado, resultado){
+        textoEscreverDados.innerText += dado + "/";
+        textoResultDado.innerText += resultado + "/";
+    }
+
+}
+
+function updateAnotacoes(nomePlayer){
+    const mudança = document.getElementById("Anotações").value;
+    console.log(mudança)
+    const changes = {
+        Anotações: mudança + ".",
+    };
+
+    updatePlayer(changes, nomePlayer)
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((err) => alert("to bem nao"));
+}
 
 async function mudarValorSimples(nomePlayer, item) {
     const valor = Number(getValueById(item));
@@ -88,6 +153,21 @@ async function mudarValorPericia(
             .catch((err) => alert("to bem nao"));
     } else alert("chega mano");
     botao.disabled = false;
+}
+
+async function mudarQuantidadeItem(nomePlayer,itemPOS, itemID, update){
+    const valor = Number(getTextById(itemID)) + Number(update);
+    const changes = {
+        Itens:{
+            [itemPOS]:{
+                Quantidade: valor,
+            },
+        },
+    };
+    updatePlayer(changes, nomePlayer).then((result)=>{
+        console.log(result);
+        document.getElementById(itemID).innerText = valor;
+    }).catch((err)=> alert("to bem nao"));
 }
 
 async function mudarValorAtributo(botaoId, nomePlayer, atributo, update) {
@@ -189,14 +269,13 @@ function tooltipMouse(e, Nome) {
     var tipX = "px";
     var tipY = "px";
     var tooltip_rect = tooltip.getBoundingClientRect();
-    console.log(tooltip_rect.width);
 
     if (tooltip_rect.x + tooltip_rect.width > window.innerWidth - 30) {
         tipX = tooltip_rect.width;
         // console.log(tipX);
     }
-    if (tooltip_rect.y < 0) {
-        tipY = tipY - tooltip_rect.y;
+    if (tooltip_rect.y + tooltip_rect.height > window.innerHeight - 30) {
+        tipY = tooltip_rect.height - 40;
     }
 
     tooltip.style.top = y - tipY + "px";
@@ -219,4 +298,7 @@ export {
     mudarValorResistencia,
     mudarValorSimples,
     mudarValorStat,
+    mudarQuantidadeItem,
+    rolarMultiDados,
+    updateAnotacoes,
 };
