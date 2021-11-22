@@ -23,13 +23,17 @@ async function playerHandler(req, res) {
             break;
         case "PATCH":
             try {
-                console.log(req.body);
                 const player = await Player.findOne(filter);
-                const update = await Player.updateOne(
-                    filter,
-                    { $set: _.merge(player, req.body) },
-                    { new: true, runValidators: true }
-                );
+                const changes = req.body;
+                const $set =
+                    changes.Itens?.length < player.Itens.length ||
+                    changes.Habilidades?.length < player.Habilidades.length
+                        ? changes
+                        : _.merge(player, changes);
+                const update = await Player.updateOne(filter, $set, {
+                    new: true,
+                    runValidators: true,
+                });
                 if (!update || !update?.matchedCount)
                     res.status(404).send("Jogador não encontrado");
                 else if (!update?.modifiedCount)

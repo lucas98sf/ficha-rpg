@@ -106,7 +106,7 @@ const PlayerSchema = new Schema({
                 Quantidade: { type: Number, default: 1, min: 1, required: true }
             },
         ],
-        default: [],
+        default: []
     },
     Habilidades: {
         type: [
@@ -114,7 +114,7 @@ const PlayerSchema = new Schema({
                 ID: { type: Number, required: true },
             },
         ],
-        default: [],
+        default: []
     }
 });
 

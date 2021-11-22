@@ -1,5 +1,5 @@
 import axios from "axios";
-import { update } from "lodash";
+import _ from "lodash";
 
 const getValueById = (id) => {
     return document.getElementById(id).value;
@@ -9,59 +9,54 @@ const getTextById = (id) => {
     return document.getElementById(id).innerText;
 };
 
+function rolarMultiDados() {
+    const inputMultiDados = getValueById("inputMultiDados");
+    const textoEscreverDados = document.getElementById("textTipoDado");
+    const textoResultDado = document.getElementById("textResultDado");
+    const total = document.getElementById("totalDados");
 
-function rolarMultiDados(){
-    const inputMultiDados = getValueById("inputMultiDados")
-    const textoEscreverDados = document.getElementById("textTipoDado")
-    const textoResultDado = document.getElementById("textResultDado")
-    const total = document.getElementById("totalDados")
+    const splitDados = inputMultiDados.split("+");
+    const dados = splitDados.map((conjuntoDados) => conjuntoDados.split("d"));
 
-    const splitDados = inputMultiDados.split("+")
-    const dados = splitDados.map(conjuntoDados => conjuntoDados.split("d"))
+    const results = {};
 
-    const results = { }
-
-    textoEscreverDados.innerText = ""
-    textoResultDado.innerText = ""
-    total.innerText = ""
-    for(let [quant, dado] of dados){
-        let resultsDado = []
-        for(let i = 0; i < quant; i++){
-            const result = Math.floor(Math.random() * dado + 1)
-            resultsDado.push(result)
+    textoEscreverDados.innerText = "";
+    textoResultDado.innerText = "";
+    total.innerText = "";
+    for (let [quant, dado] of dados) {
+        let resultsDado = [];
+        for (let i = 0; i < quant; i++) {
+            const result = Math.floor(Math.random() * dado + 1);
+            resultsDado.push(result);
         }
-        const tipoDado = "D" + dado
-        results[tipoDado] = resultsDado
+        const tipoDado = "D" + dado;
+        results[tipoDado] = resultsDado;
     }
 
-
-    for(let result of Object.entries(results)){
-        const tipoDado = result[0]
-        const resultadosDados = result[1]
-        const sum = result[1].reduce(add, 0)
+    for (let result of Object.entries(results)) {
+        const tipoDado = result[0];
+        const resultadosDados = result[1];
+        const sum = result[1].reduce(add, 0);
         function add(accumulator, a) {
             return accumulator + a;
         }
 
         total.innerText += sum + "=" + tipoDado + "/";
-        
 
-        for(let resultadoDado of resultadosDados){
-            escreverDados(tipoDado, resultadoDado)
+        for (let resultadoDado of resultadosDados) {
+            escreverDados(tipoDado, resultadoDado);
         }
-
     }
 
-    function escreverDados(dado, resultado){
+    function escreverDados(dado, resultado) {
         textoEscreverDados.innerText += dado + "/";
         textoResultDado.innerText += resultado + "/";
     }
-
 }
 
-function updateAnotacoes(nomePlayer){
+function updateAnotacoes(nomePlayer) {
     const mudança = document.getElementById("Anotações").value;
-    console.log(mudança)
+    console.log(mudança);
     const changes = {
         Anotações: mudança + ".",
     };
@@ -86,12 +81,12 @@ async function mudarValorSimples(nomePlayer, item) {
         .catch((err) => alert("to bem nao"));
 }
 
-async function mudarValorStat(nomePlayer,tipo, stat) {
+async function mudarValorStat(nomePlayer, tipo, stat) {
     // console.log(stat);
     const valor = Number(getValueById(stat));
     const changes = {
         Status: {
-            [tipo]: {           
+            [tipo]: {
                 [stat]: valor,
             },
         },
@@ -155,21 +150,6 @@ async function mudarValorPericia(
     botao.disabled = false;
 }
 
-async function mudarQuantidadeItem(nomePlayer,itemPOS, itemID, update){
-    const valor = Number(getTextById(itemID)) + Number(update);
-    const changes = {
-        Itens:{
-            [itemPOS]:{
-                Quantidade: valor,
-            },
-        },
-    };
-    updatePlayer(changes, nomePlayer).then((result)=>{
-        console.log(result);
-        document.getElementById(itemID).innerText = valor;
-    }).catch((err)=> alert("to bem nao"));
-}
-
 async function mudarValorAtributo(botaoId, nomePlayer, atributo, update) {
     const botao = document.getElementById(botaoId);
     botao.disabled = true;
@@ -198,6 +178,21 @@ async function updatePlayer(changes, nomePlayer) {
     const url = `${window.location.protocol}//${hostname}`;
     // console.log(url);
     return await axios.patch(`${url}/api/players/${nomePlayer}`, changes);
+}
+
+async function buscarItem(nome) {
+    const hostname =
+        window.location.hostname === "localhost"
+            ? "localhost:3000"
+            : window.location.hostname;
+    const url = `${window.location.protocol}//${hostname}`;
+    // console.log(url);
+    const items = await axios
+        .get(`${url}/api/items`)
+        .then((result) => result.data);
+    const item = items.find((item) => item.Nome.match(new RegExp(nome, "i")));
+    item.ID = item.item_id;
+    return item;
 }
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -298,7 +293,8 @@ export {
     mudarValorResistencia,
     mudarValorSimples,
     mudarValorStat,
-    mudarQuantidadeItem,
+    updatePlayer,
+    buscarItem,
     rolarMultiDados,
     updateAnotacoes,
 };
