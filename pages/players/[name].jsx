@@ -45,7 +45,10 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
     return (
         //<div class="grid-container">
         <center>
-            <Head><title>{Nome}</title></Head>
+            <Head>
+                <title>{Nome}</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div className="tudo">
                 <Stats {...StatsProps} />
                 <Resistances {...ResistancesProps} />
