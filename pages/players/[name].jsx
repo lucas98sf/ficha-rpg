@@ -35,13 +35,23 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function PlayerPage({ player, Itens, Habilidades }) {
-    const { Nome, Imagem, Raça, Status, Atributos, Perícias, Resistências, Lins, Exp, Anotações } =
-        player;
+    const {
+        Nome,
+        Imagem,
+        Raça,
+        Status,
+        Atributos,
+        Perícias,
+        Resistências,
+        Lins,
+        Exp,
+        Anotações,
+    } = player;
     const StatsProps = { Nome, Imagem, Raça, Status, Lins, Exp };
     const ResistancesProps = { Nome, Resistências };
     const AttributesProps = { Nome, Atributos };
     const PericiasProps = { Nome, Perícias };
-    const ItemsProps = {Nome, Itens };
+    const ItemsProps = { Nome, Itens };
     return (
         //<div class="grid-container">
         <center>
@@ -61,20 +71,35 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                     <div id="textTipoDado"></div>
                     <div id="textResultDado"></div>
                     <div id="totalDados"></div>
-                    <button className="botaoMultiDados" onClick={()=> rolarMultiDados()}>Rolar</button>
+                    <button
+                        className="botaoMultiDados"
+                        onClick={() => rolarMultiDados()}
+                    >
+                        Rolar
+                    </button>
                 </div>
                 <div className="anotações">
                     Anotações
-                    <textarea type="text" defaultValue={Anotações} id="Anotações" className="anotaçõesInput" onKeyUp={()=> updateAnotacoes(Nome)}/>
+                    <textarea
+                        type="text"
+                        defaultValue={Anotações}
+                        id="Anotações"
+                        className="anotaçõesInput"
+                        onKeyUp={() => updateAnotacoes(Nome)}
+                    />
                 </div>
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
-            <ItemsTooltips Itens={Itens} />
             <div id="containerD20">
                 <div id="nomePericia">nomepericia</div>
                 <div id="numeroRolado">dadotexto</div>
                 <div id="dadoImg">
-                    <Image src="/images/D20.png" alt="D20" width={`200vw`} height={`200vw`}/>
+                    <Image
+                        src="/images/D20.png"
+                        alt="D20"
+                        width={`200vw`}
+                        height={`200vw`}
+                    />
                 </div>
             </div>
             <div id="resultadoTexto"></div>

@@ -6,6 +6,7 @@ import {
     tooltipMouse,
     tooltipMouseOut,
 } from "../utils";
+import ItemsTooltips from "./ItemsTooltips";
 import React, { useEffect, useState } from "react";
 
 export default function Itens({ Nome, Itens }) {
@@ -46,7 +47,6 @@ export default function Itens({ Nome, Itens }) {
             })
             .catch((err) => alert("to bem nao"));
         botao.disabled = false;
-        //TODO: atualizar tooltips
     };
 
     const adicionarItem = async () => {
@@ -80,6 +80,7 @@ export default function Itens({ Nome, Itens }) {
     return (
         <div className="Items">
             <h3>Itens</h3>
+            <ItemsTooltips Itens={itens} />
             {itens.map(({ Nome, Quantidade, ID }, index) => {
                 return (
                     <div key={Nome} className="Item">
