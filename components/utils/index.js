@@ -157,6 +157,7 @@ async function mudarValorPericia(
 
 async function mudarQuantidadeItem(nomePlayer,itemPOS, itemID, update){
     const valor = Number(getTextById(itemID)) + Number(update);
+    if(valor == 0){console.log("oi") }
     const changes = {
         Itens:{
             [itemPOS]:{
