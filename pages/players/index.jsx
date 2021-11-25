@@ -20,7 +20,7 @@ export default function PlayerPage({ players }) {
             {players.map((player) => {
                 const { Nome, Imagem, Raça, Status, Atributos, Cor } = player;
                 const props = { Nome, Imagem, Raça, Status, Atributos, Cor };
-                return <Profile key={Nome} {...props} />;
+                return <Profile key={`${Nome}profile`} {...props} />;
             })}
         </div>
         </div>
