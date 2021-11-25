@@ -8,7 +8,7 @@ export default function Home() {
         <title>Home</title>
       </Head>
       <h1>Home</h1>
-      <Link href={`https://mundo-sem-vida.herokuapp.com/players`}>
+      <Link href={`players`}>
           Players
         </Link>
     </div>
