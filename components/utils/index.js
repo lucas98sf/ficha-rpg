@@ -191,9 +191,9 @@ async function buscarItem(nome) {
         .get(`${url}/api/items`)
         .then((result) => result.data);
     const item = items.find((item) => item.Nome.match(new RegExp(nome, "i")));
-    if(typeof item === 'undefined'){
+    if (typeof item === "undefined") {
         console.log("n existe");
-        return
+        return;
     }
     item.ID = item.item_id;
     return item;

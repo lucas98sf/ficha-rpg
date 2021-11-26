@@ -14,20 +14,23 @@ import {
 
 export async function getServerSideProps({ params }) {
     const name = params.name || null;
-    const res = await fetch(`http://localhost:3000/api/players/${name}`);
+    const baseUrl = process.env.NODE_ENV == "development"
+        ? process.env.development.url
+        : process.env.production.url;
+    const res = await fetch(`${baseUrl}/api/players/${encodeURIComponent(name)}`);
     const player = await res.json();
 
     const items = [],
         skills = [];
     for (const { ID, Quantidade } of player.Itens) {
         if (!ID) continue;
-        const res = await fetch(`http://localhost:3000/api/items/${ID}`);
+        const res = await fetch(`${baseUrl}/api/items/${ID}`);
         const item = await res.json();
         items.push({ ...item, Quantidade, ID });
     }
     for (const { ID } of player.Habilidades) {
         if (!ID) continue;
-        const res = await fetch(`http://localhost:3000/api/skills/${ID}`);
+        const res = await fetch(`${baseUrl}/api/skills/${ID}`);
         let skill = await res.json();
         skills.push({ ...skill, ID });
     }
@@ -35,7 +38,6 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function PlayerPage({ player, Itens, Habilidades }) {
-    
     const {
         Nome,
         Imagem,

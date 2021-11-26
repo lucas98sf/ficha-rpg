@@ -1,3 +1,11 @@
 module.exports = {
-  reactStrictMode: true,
-}
+    reactStrictMode: true,
+    env: {
+        development: {
+            url: "http://localhost:3000",
+        },
+        production: {
+            url: "https://ficha-rpg-msv.vercel.app",
+        },
+    },
+};
