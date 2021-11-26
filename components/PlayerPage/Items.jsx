@@ -49,32 +49,34 @@ export default function Itens({ Nome, Itens }) {
         botao.disabled = false;
     };
 
-    const adicionarItem = async () => {
-        const botao = document.getElementById("addItem");
-        botao.disabled = true;
-        const nomeItem = getValueById("nomeItem")?.trim();
-        if (!nomeItem) return;
-        if (itens.some((item) => item.Nome.match(new RegExp(nomeItem, "i"))))
-            return alert("vc ja tem esse");
-        const item = await buscarItem(nomeItem);
-        if (!item) return alert(`existe esse tal de ${nomeItem} não mano`);
-        item.Quantidade = 1;
-        const newItens = [...itens, item];
-        const changes = {
-            Itens: itens.reduce(
-                (acc, { ID, Quantidade, _id }) => {
-                    acc.push({ ID, Quantidade, _id });
-                    return acc;
-                },
-                [{ ID: item.ID, Quantidade: item.Quantidade, _id: item._id }]
-            ),
-        };
-        updatePlayer(changes, nomePlayer)
-            .then((result) => {
-                setItens(newItens);
-            })
-            .catch((err) => alert("to bem nao"));
-        botao.disabled = false;
+    const adicionarItem = async (event) => {
+        if (event.keyCode == 13){
+            const nomeItem = getValueById("nomeItem")?.trim();
+            console.log(nomeItem)
+            if (!nomeItem) return;
+            if (itens.some((item) => item.Nome.match(new RegExp(nomeItem, "i"))))
+                return alert("vc ja tem esse");
+            const item = await buscarItem(nomeItem);
+            if (!item) return alert(`existe esse tal de ${nomeItem} não mano`);
+            item.Quantidade = 1;
+            const newItens = [...itens, item];
+            const changes = {
+                Itens: itens.reduce(
+                    (acc, { ID, Quantidade, _id }) => {
+                        acc.push({ ID, Quantidade, _id });
+                        return acc;
+                    },
+                    [{ ID: item.ID, Quantidade: item.Quantidade, _id: item._id }]
+                ),
+            };
+            updatePlayer(changes, nomePlayer)
+                .then((result) => {
+                    setItens(newItens);
+                })
+                .catch((err) => alert("to bem nao"));
+        document.getElementById("nomeItem").value = "";
+
+        }
     };
 
     return (
@@ -120,14 +122,7 @@ export default function Itens({ Nome, Itens }) {
                     </div>
                 );
             })}
-            <input id="nomeItem" type="text" />
-            <button
-                id="addItem"
-                onClick={() => adicionarItem()}
-                className="addItem"
-            >
-                +
-            </button>
+            <input id="nomeItem" type="text" placeholder="Nome do item" onKeyDown={(event) => adicionarItem(event)}/>
         </div>
     );
 }

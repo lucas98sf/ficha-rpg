@@ -2,7 +2,12 @@ import Profile from "../../components/Profile";
 import Head from "next/head";
 
 export async function getServerSideProps() {
-    const res = await fetch(`http://localhost:3000/api/players`);
+    const hostname =
+        window.location.hostname === "localhost"
+            ? "localhost:3000"
+            : window.location.hostname;
+    const url = `${window.location.protocol}//${hostname}`;
+    const res = await fetch(`http://${url}/api/players`);
     const players = await res.json();
     return { props: { players} };
 }
