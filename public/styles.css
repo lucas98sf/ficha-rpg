@@ -25,24 +25,24 @@ body {
 /* BOTÃO NO GRID DO MENU */
 .playerButton{
     font-family: "monospace";
-    font-size: 1vw;
+    font-size: 20px;
     font-style: normal;
     display: grid;
     width: fit-content;
     height: fit-content;
-    border: 0.2vw solid rgba(255, 255, 255, 0);
+    border: 2px solid rgba(255, 255, 255, 0);
     border-top: 0vw;
     justify-items: center;
     background: #00000000;
-    margin: 0.2vw;
+    margin: 4px;
     padding: 0;
 }
 /*  */
 
 /* ITENS DIRETO NO GRID DO BOTÃO */
 .playerNameText{
-    font-size: 1.5vw;
-    border: 0.2vw solid;
+    font-size: 30px;
+    border: 2px solid;
     width: 100%;
     grid-column: 1/3;
     grid-row: 1;
@@ -54,7 +54,7 @@ body {
 .playerImg{
     grid-column: 1;
     grid-row: 2/10;
-    width: 14vw;
+    width: 280px;
 }
 /*  */
 
@@ -66,8 +66,8 @@ body {
 }
 .playerStatsText > *{
     display: flex;
-    outline: 0.1vw solid;
-    border: 0.1vw solid;
+    outline: 1px solid;
+    border: 1px solid;
     line-height: 1vw;
     width: fit-content;
     justify-content: center;
@@ -83,14 +83,14 @@ body {
 }
 .playerAttributesText > *{
     display: flex;
-    outline: 0.1vw solid;
-    border: 0.1vw solid;
-    line-height: 1vw;
-    width: 2.2vw;
-    margin: 0.3vw;
+    outline: 1px solid;
+    border: 1px solid;
+    line-height: 20px;
+    width: 44px;
+    margin: 6px;
     justify-content: center;
-    padding-left: 0.02vw;
-    padding-right: 0.02vw;
+    padding-left: 0.4px;
+    padding-right: 0.4px;
 }
 /*  */
 #VidaAtual,#VidaMáxima,#SanidadeAtual,#SanidadeMáxima,#MagiaAtual,#MagiaMáxima{
@@ -261,14 +261,14 @@ body {
 .statsProfile{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 0.5vw;
+    margin-top: 5px;
     width: 100%;
     grid-column: 2/4;
     grid-row: 2;
 }
 .titleStatProfile{
-    border-bottom: 0.1vw solid white;
-    outline: 0.1vw solid white;
+    border-bottom: 1px solid white;
+    outline: 1px solid white;
     grid-column: 1/4;
     grid-row: 1;
 }
@@ -288,24 +288,24 @@ body {
 
 .PSProfile,.PMProfile,.PVProfile{
     display: grid;
-    border: 0.1vw solid white;
-    outline: 0.1vw solid white;
-    width: 3.5vw;
+    border: 1px solid white;
+    outline: 1px solid white;
+    width: 70px;
     grid-template-columns: 1fr 10% 1fr;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-left: 0.1vw;
-    margin-right: 0.1vw;
-    font-size: 1vw;
+    margin-left: 1px;
+    margin-right: 1px;
+    font-size: 20px;
 }
 .VidaAtualProfile,.SanidadeAtualProfile,.MagiaAtualProfile{
-    font-size: 1vw;
+    font-size: 20px;
     grid-column: 1;
     grid-row: 2;
 }
 .VidaMáximaProfile,.SanidadeMáximaProfile,.MagiaMáximaProfile{
-    font-size: 1vw;
+    font-size: 20px;
     grid-column: 3;
     grid-row: 2;
 }
