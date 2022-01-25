@@ -1,6 +1,6 @@
 import { mudarValorPericia, RollD20 } from "../utils";
 
-export default function Pericias({ Nome, Perícias }) {
+export default function Expertises({ Nome, Perícias }) {
     return (
         <div className="pericias">
             {Object.entries(Perícias).map(([type, pericias]) => {

@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import {
     Attributes,
-    Pericias,
+    Expertises,
     Resistances,
     Stats,
     Items,
@@ -14,10 +14,13 @@ import {
 
 export async function getServerSideProps({ params }) {
     const name = params.name || null;
-    const baseUrl = process.env.NODE_ENV == "development"
-        ? process.env.development.url
-        : process.env.production.url;
-    const res = await fetch(`${baseUrl}/api/players/${encodeURIComponent(name)}`);
+    const baseUrl =
+        process.env.NODE_ENV == "development"
+            ? process.env.development.url
+            : process.env.production.url;
+    const res = await fetch(
+        `${baseUrl}/api/players/${encodeURIComponent(name)}`
+    );
     const player = await res.json();
 
     const items = [],
@@ -53,7 +56,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
     const StatsProps = { Nome, Imagem, Raça, Status, Lins, Exp };
     const ResistancesProps = { Nome, Resistências };
     const AttributesProps = { Nome, Atributos };
-    const PericiasProps = { Nome, Perícias };
+    const ExpertisesProps = { Nome, Perícias };
     const ItemsProps = { Nome, Itens };
     return (
         //<div class="grid-container">
@@ -66,7 +69,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <Stats {...StatsProps} />
                 <Resistances {...ResistancesProps} />
                 <Attributes {...AttributesProps} />
-                <Pericias {...PericiasProps} />
+                <Expertises {...ExpertisesProps} />
                 <Items {...ItemsProps} />
                 <Skills Habilidades={Habilidades} />
                 <div className="multidados">
