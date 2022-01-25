@@ -1,6 +1,5 @@
 import { rolarMultiDados, updateAnotacoes } from "../../components/utils";
 import Head from "next/head";
-import Image from "next/image";
 import {
     Attributes,
     Expertises,
@@ -10,6 +9,7 @@ import {
     Skills,
     ItemsTooltips,
     SkillsTooltips,
+    RollDices
 } from "../../components/PlayerPage";
 
 export async function getServerSideProps({ params }) {
@@ -72,18 +72,6 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <Expertises {...ExpertisesProps} />
                 <Items {...ItemsProps} />
                 <Skills Habilidades={Habilidades} />
-                <div className="multidados">
-                    <input type="text" className="" id="inputMultiDados" />
-                    <div id="textTipoDado"></div>
-                    <div id="textResultDado"></div>
-                    <div id="totalDados"></div>
-                    <button
-                        className="botaoMultiDados"
-                        onClick={() => rolarMultiDados()}
-                    >
-                        Rolar
-                    </button>
-                </div>
                 <div className="anotações">
                     Anotações
                     <textarea
@@ -96,19 +84,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 </div>
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
-            <div id="containerD20">
-                <div id="nomePericia">nomepericia</div>
-                <div id="numeroRolado">dadotexto</div>
-                <div id="dadoImg">
-                    <Image
-                        src="/images/D20.png"
-                        alt="D20"
-                        width={`200vw`}
-                        height={`200vw`}
-                    />
-                </div>
-            </div>
-            <div id="resultadoTexto"></div>
+            <div id="dicesModal"/>
         </center>
     );
 }

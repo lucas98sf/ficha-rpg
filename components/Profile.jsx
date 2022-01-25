@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Profile({
     Nome,
@@ -9,7 +10,7 @@ export default function Profile({
     Cor,
 }) {
     return (
-        <Link href={`/players/${Nome}`}>
+        <Link href={`/players/${Nome}`} passHref>
             <button
                 className="playerButton"
                 id={`${Nome}Button`}
@@ -23,7 +24,7 @@ export default function Profile({
                     {Nome}
                 </div>
                 <div className="playerImg">
-                    <img className="playerImg" src={Imagem}></img>
+                    <Image alt="Player profile picture" className="playerImg" src={Imagem}></Image>
                 </div>
                 {/* <div className="playerRaceText">{Raça}</div> */}
                 {Object.entries(Status).map(([type, stat]) => {

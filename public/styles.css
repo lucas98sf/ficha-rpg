@@ -812,9 +812,9 @@ body {
     color: rgb(162, 0, 255);
 }
 
-#containerD20{
+.containerD20{
     display: grid;
-    visibility: hidden;
+    /* visibility: hidden; */
     grid-template-rows: repeat(4,1fr);
     border: 0.1vw solid white;
     background-color: black;
@@ -828,22 +828,22 @@ body {
     margin-left: -6vw;
 }
 
-#nomePericia{
+.nomePericia{
     border-bottom: 0.1vw solid white;
     font-size: 1vw;
     grid-row: 1;
     grid-column: 1;
 }   
-#dadoImg{
+.dadoImg{
     grid-row: 2;
     grid-column: 1;
 }
-#numeroRolado{
+.numeroRolado{
     font-size: 1.5vw;
     grid-row: 2;
     grid-column: 1;
 }
-#resultadoTexto{
+.resultadoTexto{
     position: fixed;
     visibility: hidden;
     border: 0.1vw solid white;

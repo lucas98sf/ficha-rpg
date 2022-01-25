@@ -1,5 +1,7 @@
 import axios from "axios";
 import _ from "lodash";
+import DicesModal from "../PlayerPage/RollDices";
+import ReactDOM from "react-dom";
 
 const getValueById = (id) => {
     return document.getElementById(id).value;
@@ -9,49 +11,18 @@ const getTextById = (id) => {
     return document.getElementById(id).innerText;
 };
 
-function rolarMultiDados() {
-    const inputMultiDados = getValueById("inputMultiDados");
-    const textoEscreverDados = document.getElementById("textTipoDado");
-    const textoResultDado = document.getElementById("textResultDado");
-    const total = document.getElementById("totalDados");
+const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
-    const splitDados = inputMultiDados.split("+");
-    const dados = splitDados.map((conjuntoDados) => conjuntoDados.split("d"));
-
-    const results = {};
-
-    textoEscreverDados.innerText = "";
-    textoResultDado.innerText = "";
-    total.innerText = "";
-    for (let [quant, dado] of dados) {
-        let resultsDado = [];
-        for (let i = 0; i < quant; i++) {
-            const result = Math.floor(Math.random() * dado + 1);
-            resultsDado.push(result);
-        }
-        const tipoDado = "D" + dado;
-        results[tipoDado] = resultsDado;
-    }
-
-    for (let result of Object.entries(results)) {
-        const tipoDado = result[0];
-        const resultadosDados = result[1];
-        const sum = result[1].reduce(add, 0);
-        function add(accumulator, a) {
-            return accumulator + a;
-        }
-
-        total.innerText += sum + "=" + tipoDado + "/";
-
-        for (let resultadoDado of resultadosDados) {
-            escreverDados(tipoDado, resultadoDado);
-        }
-    }
-
-    function escreverDados(dado, resultado) {
-        textoEscreverDados.innerText += dado + "/";
-        textoResultDado.innerText += resultado + "/";
-    }
+let rolandoDado = false;
+async function RollD20(nomePericia) {
+    if (rolandoDado) return;
+    rolandoDado = true;
+    const props = { nomePericia, pericia: getTextById(nomePericia) };
+    const container = document.getElementById("dicesModal")
+    ReactDOM.render(<DicesModal {...props} />, container);
+    await timer(3100);
+    ReactDOM.unmountComponentAtNode(container);
+    rolandoDado = false;
 }
 
 function updateAnotacoes(nomePlayer) {
@@ -199,64 +170,6 @@ async function buscarItem(nome) {
     return item;
 }
 
-const timer = (ms) => new Promise((res) => setTimeout(res, ms));
-let rolandoDado = false;
-async function RollD20(nomePericia) {
-    const dadoTexto = document.getElementById("numeroRolado");
-    const resultadoTexto = document.getElementById("resultadoTexto");
-    const divD20 = document.getElementById("containerD20");
-    const nomeDaPericia = document.getElementById("nomePericia");
-    let textoResultadoTeste;
-    const D20 = Math.floor(Math.random() * 20 + 1);
-
-    const normal = [
-        20, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
-    ];
-    const bom = [
-        0, 20, 20, 18, 18, 17, 17, 16, 16, 15, 15, 14, 14, 13, 13, 12, 12, 11,
-        11,
-    ];
-    const extremo = [
-        0, 0, 0, 20, 20, 20, 19, 19, 19, 19, 18, 18, 18, 18, 17, 17, 17, 17, 16,
-    ];
-
-    const pericia = getTextById(nomePericia);
-
-    if (!rolandoDado) {
-        rolandoDado = true;
-        console.log(rolandoDado);
-        divD20.style.visibility = "visible";
-        nomeDaPericia.innerText = nomePericia;
-        for (let i = 0; i <= 15; i++) {
-            let dado20 = Math.floor(Math.random() * 20 + 1);
-            dadoTexto.innerHTML = `${dado20}`;
-            await timer(100);
-        }
-
-        if (D20 == 1) {
-            textoResultadoTeste = "Desastre!";
-        } else if (D20 < normal[pericia - 1]) {
-            textoResultadoTeste = "Falha";
-        } else if (D20 < bom[pericia - 1]) {
-            textoResultadoTeste = "Normal";
-        } else if (D20 < extremo[pericia - 1]) {
-            textoResultadoTeste = "Bom";
-        } else {
-            textoResultadoTeste = "Extremo";
-        }
-
-        resultadoTexto.style.visibility = "visible";
-        dadoTexto.innerHTML = `${D20}`;
-        resultadoTexto.innerHTML = `${textoResultadoTeste}`;
-
-        await timer(1500);
-        resultadoTexto.style.visibility = "hidden";
-        divD20.style.visibility = "hidden";
-        rolandoDado = false;
-        console.log(rolandoDado);
-    }
-}
-
 function tooltipMouse(e, Nome) {
     // console.log(Nome);
     var x = e.clientX;
@@ -293,12 +206,12 @@ export {
     mudarValorAtributo,
     tooltipMouse,
     tooltipMouseOut,
-    RollD20,
     mudarValorResistencia,
     mudarValorSimples,
     mudarValorStat,
     updatePlayer,
     buscarItem,
-    rolarMultiDados,
+    RollD20,
+    // rolarMultiDados,
     updateAnotacoes,
 };
