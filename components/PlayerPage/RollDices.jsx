@@ -7,7 +7,7 @@ export default function DicesModal({ nomePericia, pericia }) {
     const randomD20Number = () => Math.floor(Math.random() * 20 + 1);
 
     const [result, setResult] = useState(randomD20Number());
-    const [resultText, setResultText] = useState("");
+    const [resultText, setResultText] = useState(null);
     const [showElement, setShowElement] = useState(true);
 
     useEffect(() => {
@@ -15,44 +15,49 @@ export default function DicesModal({ nomePericia, pericia }) {
             setShowElement(false);
         }, 3000);
 
-        for (let i = 0; i < 15; i++) {
-            setResult(randomD20Number());
-            timer(100);
-        }
-    }, [showElement]);
+        const finalResult = randomD20Number();
 
-    useEffect(() => {
-        const getResultText = (resultValue) => {
-            const normal = [
-                20, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2,
-                1,
-            ];
-            const bom = [
-                0, 20, 20, 18, 18, 17, 17, 16, 16, 15, 15, 14, 14, 13, 13, 12,
-                12, 11, 11,
-            ];
-            const extremo = [
-                0, 0, 0, 20, 20, 20, 19, 19, 19, 19, 18, 18, 18, 18, 17, 17, 17,
-                17, 16,
-            ];
-
-            let text;
-            if (resultValue == 1) {
-                text = "Desastre!";
-            } else if (resultValue < normal[pericia - 1]) {
-                text = "Falha";
-            } else if (resultValue < bom[pericia - 1]) {
-                text = "Normal";
-            } else if (resultValue < extremo[pericia - 1]) {
-                text = "Bom";
-            } else {
-                text = "Extremo";
+        async function animateRolls() {
+            for (let i = 0; i < 15; i++) {
+                await timer(100);
+                setResult(randomD20Number());
             }
-            return text;
-        };
-        setResultText(getResultText(result));
-    }, [result, pericia]);
-    console.log(showElement)
+            setResult(finalResult);
+        }
+        animateRolls().then(() => {
+            const getResultText = (resultValue) => {
+                const normal = [
+                    20, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3,
+                    2, 1,
+                ];
+                const bom = [
+                    0, 20, 20, 18, 18, 17, 17, 16, 16, 15, 15, 14, 14, 13, 13,
+                    12, 12, 11, 11,
+                ];
+                const extremo = [
+                    0, 0, 0, 20, 20, 20, 19, 19, 19, 19, 18, 18, 18, 18, 17, 17,
+                    17, 17, 16,
+                ];
+
+                let text;
+                if (resultValue == 1) {
+                    text = "Desastre!";
+                } else if (resultValue < normal[pericia - 1]) {
+                    text = "Falha";
+                } else if (resultValue < bom[pericia - 1]) {
+                    text = "Normal";
+                } else if (resultValue < extremo[pericia - 1]) {
+                    text = "Bom";
+                } else {
+                    text = "Extremo";
+                }
+                return text;
+            };
+            console.log(getResultText(finalResult));
+            setResultText(getResultText(finalResult));
+        });
+    }, [showElement, pericia]);
+
     return showElement ? (
         <div className="containerD20">
             <div className="nomePericia">{nomePericia}</div>
@@ -65,7 +70,7 @@ export default function DicesModal({ nomePericia, pericia }) {
                     height="200vw"
                 />
             </div>
-            <div className="resultadoTexto">{resultText}</div>
+            {resultText && <div className="resultadoTexto">{resultText}</div>}
         </div>
     ) : (
         <></>

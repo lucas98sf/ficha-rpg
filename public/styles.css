@@ -833,7 +833,7 @@ body {
 }
 .resultadoTexto{
     position: fixed;
-    visibility: hidden;
+    /* visibility: hidden; */
     border: 1px solid white;
     background-color: black;
     width: 230px;
