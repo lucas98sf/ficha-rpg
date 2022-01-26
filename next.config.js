@@ -8,4 +8,5 @@ module.exports = {
             url: "https://ficha-rpg-msv.vercel.app",
         },
     },
+    images: { domains: ["i.ibb.co"] }
 };

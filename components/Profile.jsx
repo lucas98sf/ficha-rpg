@@ -24,7 +24,14 @@ export default function Profile({
                     {Nome}
                 </div>
                 <div className="playerImg">
-                    <Image alt="Player profile picture" className="playerImg" src={Imagem}></Image>
+                    <Image
+                        alt="Player profile picture"
+                        className="playerImg"
+                        width={280}
+                        height={280}
+                        unoptimized={true}
+                        src={Imagem}
+                    ></Image>
                 </div>
                 {/* <div className="playerRaceText">{Raça}</div> */}
                 {Object.entries(Status).map(([type, stat]) => {

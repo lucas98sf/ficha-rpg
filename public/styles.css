@@ -54,7 +54,6 @@ body {
 .playerImg{
     grid-column: 1;
     grid-row: 2/10;
-    width: 280px;
 }
 /*  */
 
