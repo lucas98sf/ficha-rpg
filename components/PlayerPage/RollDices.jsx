@@ -8,13 +8,8 @@ export default function DicesModal({ nomePericia, pericia }) {
 
     const [result, setResult] = useState(randomD20Number());
     const [resultText, setResultText] = useState(null);
-    const [showElement, setShowElement] = useState(true);
 
     useEffect(() => {
-        setTimeout(function () {
-            setShowElement(false);
-        }, 3000);
-
         const finalResult = randomD20Number();
 
         async function animateRolls() {
@@ -24,6 +19,7 @@ export default function DicesModal({ nomePericia, pericia }) {
             }
             setResult(finalResult);
         }
+
         animateRolls().then(() => {
             const getResultText = (resultValue) => {
                 const normal = [
@@ -53,12 +49,11 @@ export default function DicesModal({ nomePericia, pericia }) {
                 }
                 return text;
             };
-            console.log(getResultText(finalResult));
             setResultText(getResultText(finalResult));
         });
-    }, [showElement, pericia]);
+    }, [pericia]);
 
-    return showElement ? (
+    return (
         <div className="containerD20">
             <div className="nomePericia">{nomePericia}</div>
             <div className="numeroRolado">{result}</div>
@@ -72,8 +67,6 @@ export default function DicesModal({ nomePericia, pericia }) {
             </div>
             {resultText && <div className="resultadoTexto">{resultText}</div>}
         </div>
-    ) : (
-        <></>
     );
 }
 
