@@ -5,24 +5,24 @@ import Dice from "./Dice";
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 const randomDiceNumber = (diceSize) => Math.floor(Math.random() * diceSize + 1);
 
-function RollDice({ size, finalresult }) {
-    const [result, setResult] = useState(randomDiceNumber(size));
-
+function RollDice({ type, finalresult, i }) {
+    const [result, setResult] = useState(randomDiceNumber(type));
+    console.log(i)
     useEffect(() => {
         async function animateRolls() {
             for (let i = 0; i < 15; i++) {
                 await timer(100);
-                setResult(randomDiceNumber(size));
+                setResult(randomDiceNumber(type));
             }
             setResult(finalresult);
         }
         animateRolls();
-    }, [finalresult, size]);
-    // o size ainda está fixo como 20, fazer as imagens e depois colocar como variável
+    }, [finalresult, type]);
+    // o type ainda está fixo como 20, fazer as imagens e depois colocar como variável
     return (
         <div className="rollDice">
             <div className="numeroRolado">{result}</div>
-            <Dice size="20" />
+            <Dice size="150" type={type} />
         </div>
     );
 }
@@ -35,12 +35,13 @@ export default function RollDices() {
         const splittedDices = dices.split("+");
         const results = [];
         for (const dice of splittedDices) {
-            const [quantity, size] = dice.split("d");
+            const [quantity, type] = dice.split("d");
             let result = 0;
             for (let i = 0; i < quantity; i++) {
-                result += randomDiceNumber(size);
+                result = randomDiceNumber(type);
+                console.log(quantity)
             }
-            results = [...results, { quantity, size, result }];
+            results = [...results, { quantity, type, result }];
         }
         renderDices(results);
     };
@@ -52,11 +53,12 @@ export default function RollDices() {
         const container = document.getElementById("dicesModal");
         const dices = (
             <div className="containerMultiDices">
-                {results.map(({ quantity, size, result }) =>
-                    Array.of(quantity).map((_, i) => (
+                {results.map(({ quantity, type, result }) =>
+                    Array.of(quantity).map((i) => (
                         <RollDice
-                            key={`dice-${i}-${size}`}
-                            size={size}
+                            key={`dice-${i}-${type}`}
+                            type={type}
+                            i={i}
                             finalresult={result}
                         />
                     ))

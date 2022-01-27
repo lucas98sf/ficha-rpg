@@ -57,7 +57,7 @@ export default function RollTest({ nomePericia, pericia }) {
         <div className="containerD20">
             <div className="nomePericia">{nomePericia}</div>
             <div className="numeroRolado">{result}</div>
-            <Dice size="20" />
+            <Dice size="200" type="20"/>
             {resultText && <div className="resultadoTexto">{resultText}</div>}
         </div>
     );

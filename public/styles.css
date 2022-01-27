@@ -815,21 +815,22 @@ body {
     margin-top: -120px;
     margin-left: -120px;
 }
+.rollDice{
+    display: grid;
+    align-items: center;
+    width: max-content;
+}
 
 .containerMultiDices {
     display: grid;
-    /* visibility: hidden; */
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4,auto);
     border: 1px solid white;
     background-color: black;
     position: fixed;
-    align-items: center;
-    width: 1000px;
-    height: 230px;
     top: 50%;
     left: 50%;
-    margin-top: -120px;
-    margin-left: -120px;
+    /* -webkit-transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
 }
 
 .nomePericia{
