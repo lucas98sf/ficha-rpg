@@ -6,8 +6,14 @@ const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 const randomDiceNumber = (diceSize) => Math.floor(Math.random() * diceSize + 1);
 
 function RollDice({ type, finalresult, i }) {
+    var textNumero = document.getElementsByClassName("numeroRolado");
+    // console.log(textNumero);
+    
+    for (let i = 0; i < textNumero.length; i++) {
+        textNumero[i].style.fontSize = `${25}px`;
+    }
     const [result, setResult] = useState(randomDiceNumber(type));
-    console.log(i)
+    // console.log(i);
     useEffect(() => {
         async function animateRolls() {
             for (let i = 0; i < 15; i++) {
@@ -29,7 +35,6 @@ function RollDice({ type, finalresult, i }) {
 
 export default function RollDices() {
     const [dices, setDices] = useState("");
-
     const rollDices = () => {
         if (!dices) return;
         const splittedDices = dices.split("+");
@@ -39,7 +44,7 @@ export default function RollDices() {
             let result = 0;
             for (let i = 0; i < quantity; i++) {
                 result = randomDiceNumber(type);
-                console.log(quantity)
+                // console.log(quantity);
             }
             results = [...results, { quantity, type, result }];
         }

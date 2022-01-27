@@ -866,9 +866,9 @@ body {
 
 .multidados{
     display: grid;
-    align-content: center;
     grid-column: 3;
     grid-row: 3;
+    justify-content: center;
 }
 #inputMultiDados,.textTipoDado,.textResultDado,.totalDados{
     grid-column: 1;

@@ -8,7 +8,7 @@ export default function Dice({ type, size }) {
                 alt={type}
                 width={size}
                 height={size}
-                unoptimized={true}
+                // unoptimized={true}
             />
         </div>
     );
