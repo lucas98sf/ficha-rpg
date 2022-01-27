@@ -1,6 +1,6 @@
 import axios from "axios";
 import _ from "lodash";
-import DicesModal from "../PlayerPage/RollDices";
+import RollTest from "../PlayerPage/RollTest";
 import ReactDOM from "react-dom";
 
 const getValueById = (id) => {
@@ -14,12 +14,12 @@ const getTextById = (id) => {
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
 let rolandoDado = false;
-async function RollD20(nomePericia) {
+async function rollD20(nomePericia) {
     if (rolandoDado) return;
     rolandoDado = true;
     const props = { nomePericia, pericia: getTextById(nomePericia) };
-    const container = document.getElementById("dicesModal")
-    ReactDOM.render(<DicesModal {...props} />, container);
+    const container = document.getElementById("dicesModal");
+    ReactDOM.render(<RollTest {...props} />, container);
     await timer(3100);
     ReactDOM.unmountComponentAtNode(container);
     rolandoDado = false;
@@ -211,7 +211,6 @@ export {
     mudarValorStat,
     updatePlayer,
     buscarItem,
-    RollD20,
-    // rolarMultiDados,
+    rollD20,
     updateAnotacoes,
 };

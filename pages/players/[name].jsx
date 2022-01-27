@@ -1,4 +1,4 @@
-import { rolarMultiDados, updateAnotacoes } from "../../components/utils";
+import { updateAnotacoes } from "../../components/utils";
 import Head from "next/head";
 import {
     Attributes,
@@ -84,6 +84,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 </div>
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
+            <RollDices />
             <div id="dicesModal"/>
         </center>
     );
