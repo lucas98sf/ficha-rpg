@@ -5,7 +5,7 @@ import Dice from "./Dice";
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 const randomDiceNumber = (diceSize) => Math.floor(Math.random() * diceSize + 1);
 
-function RollDice({ type, finalresult, i }) {
+function RollDice({ type, finalresult, i , totalResult }) {
     var textNumero = document.getElementsByClassName("numeroRolado");
     // console.log(textNumero);
     
@@ -28,6 +28,7 @@ function RollDice({ type, finalresult, i }) {
     return (
         <div className="rollDice">
             <div className="numeroRolado">{result}</div>
+            <div className="totalDados">{totalResult}</div>
             <Dice size="150" type={type} />
         </div>
     );
@@ -42,11 +43,12 @@ export default function RollDices() {
         for (const dice of splittedDices) {
             const [quantity, type] = dice.split("d");
             let result = 0;
+            let totalResult = 0;
             for (let i = 0; i < quantity; i++) {
                 result = randomDiceNumber(type);
                 // console.log(quantity);
+                results = [...results, { quantity, type, result}];
             }
-            results = [...results, { quantity, type, result }];
         }
         renderDices(results);
     };
@@ -58,13 +60,14 @@ export default function RollDices() {
         const container = document.getElementById("dicesModal");
         const dices = (
             <div className="containerMultiDices">
-                {results.map(({ quantity, type, result }) =>
-                    Array.of(quantity).map((i) => (
+                {results.map(({ quantity, type, result, totalResult }) =>
+                    Array.of(quantity).map(() => (
                         <RollDice
-                            key={`dice-${i}-${type}`}
+                            key={`dice-${type}`}
                             type={type}
-                            i={i}
+                            i={quantity}
                             finalresult={result}
+                            totalResult={totalResult}
                         />
                     ))
                 )}
