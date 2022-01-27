@@ -6,6 +6,7 @@ import Items from "./Items";
 import Skills from "./Skills";
 import ItemsTooltips from "./ItemsTooltips";
 import SkillsTooltips from "./SkillsTooltips";
+import TextTooltips from "./TextTooltips";
 import RollDices from "./RollDices";
 
-export { Attributes, Expertises, Resistances, Stats, Items, Skills, ItemsTooltips, SkillsTooltips, RollDices };
+export { Attributes, Expertises, Resistances, Stats, Items, Skills, ItemsTooltips, SkillsTooltips, RollDices, TextTooltips };
