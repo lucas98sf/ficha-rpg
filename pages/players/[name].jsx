@@ -82,9 +82,9 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                         onKeyUp={() => updateAnotacoes(Nome)}
                     />
                 </div>
+                <RollDices />
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
-            <RollDices />
             <div id="dicesModal"/>
         </center>
     );
