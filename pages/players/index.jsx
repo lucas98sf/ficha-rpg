@@ -32,11 +32,11 @@ export default function PlayerPage({ players }) {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 {players.map((player) => {
-                    const { Nome, Imagem, Raça, Status, Atributos, Cor } =
+                    const { Nome, Imagens, Raça, Status, Atributos, Cor } =
                         player;
                     const props = {
                         Nome,
-                        Imagem,
+                        Imagens,
                         Raça,
                         Status,
                         Atributos,

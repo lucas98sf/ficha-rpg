@@ -9,7 +9,8 @@ import {
     Skills,
     ItemsTooltips,
     SkillsTooltips,
-    RollDices
+    RollDices,
+    ImageTooltips
 } from "../../components/PlayerPage";
 import Image from "next/image";
 
@@ -44,7 +45,7 @@ export async function getServerSideProps({ params }) {
 export default function PlayerPage({ player, Itens, Habilidades }) {
     const {
         Nome,
-        Imagem,
+        Imagens,
         Raça,
         Status,
         Atributos,
@@ -54,7 +55,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
         Exp,
         Anotações,
     } = player;
-    const StatsProps = { Nome, Imagem, Raça, Status, Lins, Exp };
+    const StatsProps = { Nome, Imagens, Raça, Status, Lins, Exp };
     const ResistancesProps = { Nome, Resistências };
     const AttributesProps = { Nome, Atributos };
     const ExpertisesProps = { Nome, Perícias };
@@ -94,6 +95,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <RollDices />
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
+            {/* <ImageTooltips /> */}
             <div id="dicesModal"/>
         </center>
     );

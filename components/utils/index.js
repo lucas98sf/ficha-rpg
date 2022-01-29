@@ -194,7 +194,12 @@ function tooltipMouse(e, Nome) {
     tooltip.style.left = x - tipX + "px";
 }
 
-function tooltipMouseOut(Nome) {
+function tooltipMouseFixo(e, Nome){
+    const tooltip = document.getElementById(`tooltip${Nome}`);
+    tooltip.style.visibility = "visible";
+}
+
+async function tooltipMouseOut(Nome) {
     const tooltip = document.getElementById(`tooltip${Nome}`);
     tooltip.style.visibility = "hidden";
 }
@@ -213,4 +218,5 @@ export {
     buscarItem,
     rollD20,
     updateAnotacoes,
+    tooltipMouseFixo,
 };
