@@ -9,6 +9,19 @@ body {
 }
 
 /* MENU */
+.WIP{
+    position: fixed;
+    left: 1%;
+    top: 1%;
+}
+.linkPlayers{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+
+}
+
 .playersMenu{
     display: flex;
     justify-content: center;

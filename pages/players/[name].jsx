@@ -11,6 +11,7 @@ import {
     SkillsTooltips,
     RollDices
 } from "../../components/PlayerPage";
+import Image from "next/image";
 
 export async function getServerSideProps({ params }) {
     const name = params.name || null;
@@ -65,6 +66,14 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <title>{Nome}</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <div className='WIP'>
+                <Image
+                src={`/images/WIP.png`}
+                alt="wip"
+                width="96"
+                height="48"
+                unoptimized={true}
+            /></div>
             <div className="tudo">
                 <Stats {...StatsProps} />
                 <Resistances {...ResistancesProps} />
