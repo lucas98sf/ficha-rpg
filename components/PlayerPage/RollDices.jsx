@@ -5,30 +5,25 @@ import Dice from "./Dice";
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 const randomDiceNumber = (diceSize) => Math.floor(Math.random() * diceSize + 1);
 
-function RollDice({ type, finalresult, i , totalResult }) {
-    var textNumero = document.getElementsByClassName("numeroRolado");
-    // console.log(textNumero);
-    
-    for (let i = 0; i < textNumero.length; i++) {
-        textNumero[i].style.fontSize = `${25}px`;
-    }
+function RollDice({ type, finalResult }) {
+    document
+        .querySelectorAll(".numeroRolado")
+        .forEach((elem) => (elem.style.fontSize = "25px"));
     const [result, setResult] = useState(randomDiceNumber(type));
-    // console.log(i);
+
     useEffect(() => {
         async function animateRolls() {
             for (let i = 0; i < 15; i++) {
                 await timer(100);
                 setResult(randomDiceNumber(type));
             }
-            setResult(finalresult);
         }
-        animateRolls();
-    }, [finalresult, type]);
-    // o type ainda está fixo como 20, fazer as imagens e depois colocar como variável
+        animateRolls().then(() => setResult(finalResult));
+    }, [finalResult, type]);
+
     return (
         <div className="rollDice">
             <div className="numeroRolado">{result}</div>
-            <div className="totalDados">{totalResult}</div>
             <Dice size="150" type={type} />
         </div>
     );
@@ -42,12 +37,9 @@ export default function RollDices() {
         const results = [];
         for (const dice of splittedDices) {
             const [quantity, type] = dice.split("d");
-            let result = 0;
-            let totalResult = 0;
             for (let i = 0; i < quantity; i++) {
-                result = randomDiceNumber(type);
-                // console.log(quantity);
-                results = [...results, { quantity, type, result}];
+                let result = randomDiceNumber(type);
+                results = [...results, { quantity, type, result }];
             }
         }
         renderDices(results);
@@ -58,19 +50,19 @@ export default function RollDices() {
         if (renderingDices) return;
         renderingDices = true;
         const container = document.getElementById("dicesModal");
+        const totalResult = results.reduce((acc, cur) => acc + cur.result, 0);
         const dices = (
             <div className="containerMultiDices">
-                {results.map(({ quantity, type, result, totalResult }) =>
+                {results.map(({ quantity, type, result }) =>
                     Array.of(quantity).map(() => (
                         <RollDice
                             key={`dice-${type}`}
                             type={type}
-                            i={quantity}
-                            finalresult={result}
-                            totalResult={totalResult}
+                            finalResult={result}
                         />
                     ))
                 )}
+                <center className="totalResult">{totalResult}</center>
             </div>
         );
         ReactDOM.render(dices, container);
