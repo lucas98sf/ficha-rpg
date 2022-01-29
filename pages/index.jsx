@@ -14,9 +14,9 @@ export default function Home() {
                 />
             </div>
             <div className="linkPlayers">
-            <Link href={`/players`}>
+            <Link href="/players"  passHref>
             <Image 
-                    src={`/images/loadFixed.png`}
+                    src="/images/loadFixed.png"
                     alt="link"
                     width="500"
                     height="300"

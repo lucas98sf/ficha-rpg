@@ -13,6 +13,7 @@ import {
     ImageTooltips
 } from "../../components/PlayerPage";
 import Image from "next/image";
+import Link from "next/link";
 
 export async function getServerSideProps({ params }) {
     const name = params.name || null;
@@ -63,6 +64,10 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
     return (
         //<div class="grid-container">
         <center>
+            <Link href={`/players`} passHref>
+                <div>return</div>
+            </Link>
+
             <Head>
                 <title>{Nome}</title>
                 <link rel="icon" href="/favicon.ico" />
