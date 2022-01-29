@@ -3,25 +3,48 @@ import {
     mudarValorSimples,
     tooltipMouse,
     tooltipMouseOut,
+    tooltipMouseFixo,
 } from "../utils";
 import Image from "next/image";
-// import TextTooltips from "./TextTooltips";
+let nomeImagem = "Imagem1";
+import { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 
-export default function Stats({ Nome, Imagem, Raça, Status, Lins, Exp }) {
+export default function Stats({ Nome, Imagens, Raça, Status, Lins, Exp }) {
+    const [qualFoto, setFoto] = useState(nomeImagem);
+    function changeImg(numeroFoto) {
+        nomeImagem = "Imagem" + numeroFoto;
+        setFoto(nomeImagem);
+        console.log(nomeImagem);
+    }
     return (
         <div className="centro">
             <div className="playerNameFicha">{Nome}</div>
             {/* <img className="playerImgFicha" src={Imagem}></img> */}
-            <div className="playerImgFicha">
+            <div
+                id="tooltipImages"
+                onMouseMove={(event) => tooltipMouseFixo(event, "Images")}
+                onMouseOut={() => tooltipMouseOut("Images")}
+            >
+                {Object.entries(Imagens).map(([name], i)=>{
+                    return(
+                        <button onClick={()=>changeImg(i+1)} className="changeImgButton" key={name}>{i+1}</button>
+                    );
+                })}
+            </div>
+            <div className="playerImgFichaGrid">
                 <Image
                     alt="Player profile picture"
                     className="playerImgFicha"
                     width={270}
                     height={270}
                     unoptimized={true}
-                    src={Imagem}
+                    src={Imagens[qualFoto]}
+                    onMouseMove={(event) => tooltipMouseFixo(event, "Images")}
+                    onMouseOut={() => tooltipMouseOut("Images")}
                 ></Image>
             </div>
+
             {/* <TextTooltips /> */}
             {Object.entries(Status).map(([type, stat]) => {
                 const values = Object.entries(stat).map(([name, value]) => {

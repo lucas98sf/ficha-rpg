@@ -1,7 +1,10 @@
 import mongoose, { Schema } from 'mongoose';
 
 const PlayerSchema = new Schema({
-    Imagem: { type: String },
+    Imagens:{
+        Imagem1: { type: String },
+        Imagem2: { type: String }
+    },
     Cor: { type: String },
     Nome: { type: String, required: true, trim: true, unique: true },
     Raça: { type: String, required: true, trim: true },

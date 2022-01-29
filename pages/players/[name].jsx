@@ -9,8 +9,11 @@ import {
     Skills,
     ItemsTooltips,
     SkillsTooltips,
-    RollDices
+    RollDices,
+    ImageTooltips
 } from "../../components/PlayerPage";
+import Image from "next/image";
+import Link from "next/link";
 
 export async function getServerSideProps({ params }) {
     const name = params.name || null;
@@ -43,7 +46,7 @@ export async function getServerSideProps({ params }) {
 export default function PlayerPage({ player, Itens, Habilidades }) {
     const {
         Nome,
-        Imagem,
+        Imagens,
         Raça,
         Status,
         Atributos,
@@ -53,7 +56,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
         Exp,
         Anotações,
     } = player;
-    const StatsProps = { Nome, Imagem, Raça, Status, Lins, Exp };
+    const StatsProps = { Nome, Imagens, Raça, Status, Lins, Exp };
     const ResistancesProps = { Nome, Resistências };
     const AttributesProps = { Nome, Atributos };
     const ExpertisesProps = { Nome, Perícias };
@@ -61,10 +64,22 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
     return (
         //<div class="grid-container">
         <center>
+            <Link href={`/players`} passHref>
+                <div>return</div>
+            </Link>
+
             <Head>
                 <title>{Nome}</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <div className='WIP'>
+                <Image
+                src={`/images/WIP.png`}
+                alt="wip"
+                width="96"
+                height="48"
+                unoptimized={true}
+            /></div>
             <div className="tudo">
                 <Stats {...StatsProps} />
                 <Resistances {...ResistancesProps} />
@@ -82,9 +97,10 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                         onKeyUp={() => updateAnotacoes(Nome)}
                     />
                 </div>
+                <RollDices />
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
-            <RollDices />
+            {/* <ImageTooltips /> */}
             <div id="dicesModal"/>
         </center>
     );

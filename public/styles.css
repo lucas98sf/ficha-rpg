@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 html,
 body {
@@ -9,21 +9,61 @@ body {
 }
 
 /* MENU */
-.playersMenu{
+#tooltipImages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: min-content;
+    height: min-content;
+    grid-column: 1;
+    visibility: hidden;
+    padding-top: 7px;
+}
+.changeImgButton{
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+.changeImgButton:hover{
+    background-color: white;
+    color: black;
+}
+.changeImgButton:active{
+    background: grey;
+}
+
+.playerImgFicha {
+    grid-column: 2;
+}
+
+.WIP {
+    position: fixed;
+    left: 1%;
+    top: 1%;
+}
+.linkPlayers {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+.playersMenu {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     min-height: 100vh;
 }
-.playersGrid{
+.playersGrid {
     display: grid;
     justify-items: center;
     justify-content: center;
 }
 /*  */
 /* BOTÃO NO GRID DO MENU */
-.playerButton{
+.playerButton {
     font-family: "monospace";
     font-size: 20px;
     font-style: normal;
@@ -40,38 +80,38 @@ body {
 /*  */
 
 /* ITENS DIRETO NO GRID DO BOTÃO */
-.playerNameText{
+.playerNameText {
     font-size: 30px;
     border: 2px solid;
     width: 100%;
     grid-column: 1/3;
     grid-row: 1;
 }
-.playerRaceText{
+.playerRaceText {
     grid-column: 1;
     grid-row: 2;
 }
-.playerImg{
+.playerImg {
     grid-column: 1;
     grid-row: 2/10;
 }
 /*  */
 
 /* PARENTES NO GRID PRINCIPAL DO BOTAO */
-.playerStatsText{
+.playerStatsText {
     display: grid;
     grid-column: 2;
     grid-row: 2 / 4;
 }
 
-.playerAttributesText{
+.playerAttributesText {
     grid-column: 2/3;
     grid-row: 5/8;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
-.playerAttributesText > *{
+.playerAttributesText > * {
     display: flex;
     outline: 1px solid;
     border: 1px solid;
@@ -84,7 +124,12 @@ body {
 }
 /*  */
 
-#VidaAtual,#VidaMáxima,#SanidadeAtual,#SanidadeMáxima,#MagiaAtual,#MagiaMáxima{
+#VidaAtual,
+#VidaMáxima,
+#SanidadeAtual,
+#SanidadeMáxima,
+#MagiaAtual,
+#MagiaMáxima {
     font-family: monospace;
     padding: 0px;
     font-size: 26px;
@@ -94,7 +139,12 @@ body {
     color: white;
     border: none;
 }
-#VidaAtual:focus,#VidaMáxima:focus,#SanidadeAtual:focus,#SanidadeMáxima:focus,#MagiaAtual:focus,#MagiaMáxima:focus{
+#VidaAtual:focus,
+#VidaMáxima:focus,
+#SanidadeAtual:focus,
+#SanidadeMáxima:focus,
+#MagiaAtual:focus,
+#MagiaMáxima:focus {
     outline: none;
 }
 
@@ -103,94 +153,115 @@ body {
 /*  */
 /* CONFIGURAÇÕES PERSONALIZADAS POR PERSONAGEM DOS BOTOES */
 /* MIRKHALO */
-#MirkhaloButton{
+#MirkhaloButton {
     grid-row: 1;
     grid-column: 1;
 }
-#MirkhaloButton:hover #MirkhaloText, #MirkhaloButton:hover .PVProfile, #MirkhaloButton:hover .titleStatProfile, #MirkhaloButton:hover .PSProfile, #MirkhaloButton:hover .PMProfile{
+#MirkhaloButton:hover #MirkhaloText,
+#MirkhaloButton:hover .PVProfile,
+#MirkhaloButton:hover .titleStatProfile,
+#MirkhaloButton:hover .PSProfile,
+#MirkhaloButton:hover .PMProfile {
     color: #c90000 !important;
     border-color: #c90000 !important;
     outline-color: #c90000 !important;
 }
-#MirkhaloButton:hover{
+#MirkhaloButton:hover {
     color: #c90000 !important;
     border-color: #c90000 !important;
 }
 /*  */
 
 /* DRAKE */
-#DrakeButton{
+#DrakeButton {
     grid-row: 1;
     grid-column: 2;
 }
-#DrakeButton:hover #DrakeText, #DrakeButton:hover .PVProfile, #DrakeButton:hover .titleStatProfile, #DrakeButton:hover .PSProfile, #DrakeButton:hover .PMProfile {
+#DrakeButton:hover #DrakeText,
+#DrakeButton:hover .PVProfile,
+#DrakeButton:hover .titleStatProfile,
+#DrakeButton:hover .PSProfile,
+#DrakeButton:hover .PMProfile {
     color: #05b9fa !important;
     border-color: #05b9fa !important;
     outline-color: #05b9fa !important;
 }
-#DrakeButton:hover{
+#DrakeButton:hover {
     color: #05b9fa !important;
     border-color: #05b9fa !important;
 }
 /*  */
 
 /* KIERAN */
-#KieranButton{
+#KieranButton {
     grid-row: 1;
     grid-column: 3;
 }
-#KieranButton:hover #KieranText, #KieranButton:hover .PVProfile, #KieranButton:hover .titleStatProfile, #KieranButton:hover .PSProfile, #KieranButton:hover .PMProfile{
+#KieranButton:hover #KieranText,
+#KieranButton:hover .PVProfile,
+#KieranButton:hover .titleStatProfile,
+#KieranButton:hover .PSProfile,
+#KieranButton:hover .PMProfile {
     color: #808080 !important;
     border-color: #808080 !important;
     outline-color: #808080 !important;
 }
-#KieranButton:hover{
+#KieranButton:hover {
     color: #808080 !important;
     border-color: #808080 !important;
 }
 /*  */
 
 /* MENDI */
-#MendiButton{
+#MendiButton {
     grid-row: 2;
     grid-column: 1/3;
 }
-#MendiButton:hover #MendiText, #MendiButton:hover .PVProfile, #MendiButton:hover .titleStatProfile, #MendiButton:hover .PSProfile, #MendiButton:hover .PMProfile{
+#MendiButton:hover #MendiText,
+#MendiButton:hover .PVProfile,
+#MendiButton:hover .titleStatProfile,
+#MendiButton:hover .PSProfile,
+#MendiButton:hover .PMProfile {
     color: #00c8c8 !important;
     border-color: #00c8c8 !important;
     outline-color: #00c8c8 !important;
 }
-#MendiButton:hover{
+#MendiButton:hover {
     color: #00c8c8 !important;
     border-color: #00c8c8 !important;
 }
 /*  */
 
 /* DÓRIS */
-#DórisButton{
+#DórisButton {
     grid-row: 2;
     grid-column: 2/4;
 }
-#DórisButton:hover #DórisText, #DórisButton:hover .PVProfile, #DórisButton:hover .titleStatProfile, #DórisButton:hover .PSProfile, #DórisButton:hover .PMProfile{
+#DórisButton:hover #DórisText,
+#DórisButton:hover .PVProfile,
+#DórisButton:hover .titleStatProfile,
+#DórisButton:hover .PSProfile,
+#DórisButton:hover .PMProfile {
     color: #d5009a !important;
     border-color: #d5009a !important;
     outline-color: #d5009a !important;
 }
-#DórisButton:hover{
+#DórisButton:hover {
     color: #d5009a !important;
     border-color: #d5009a !important;
 }
 /*  */
 
 /* PAGINA DO PLAYER */
-.tudo{
+.tudo {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
 }
-.centro{
+.centro {
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows:1fr;
     width: max-content;
     font-family: monospace;
     font-size: 40px;
@@ -202,26 +273,34 @@ body {
     justify-items: center;
 }
 
-.playerNameFicha,.playerImgFicha{
+.playerNameFicha,
+.playerImgFichaGrid {
     grid-column: 1;
 }
-.PV,.PS,.PM{
-    grid-row: 2;
+.PV,
+.PS,
+.PM {
+    grid-row: 2/3;
 }
-.playerImgFicha{
+.playerImgFichaGrid {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, max-content);
     grid-row: 2/5;
     /* width: 270px; */
 }
-.PV{
+.PV {
     grid-column: 2;
 }
-.PS{
+.PS {
     grid-column: 3;
 }
-.PM{
+.PM {
     grid-column: 4;
 }
-.PS,.PM,.PV{
+.PS,
+.PM,
+.PV {
     display: grid;
     border: 1px solid white;
     width: 120px;
@@ -233,24 +312,28 @@ body {
     margin-right: 15px;
     font-size: 26px;
 }
-.titleStat{
+.titleStat {
     border-bottom: 1px solid white;
     grid-column: 1/4;
     grid-row: 1;
 }
-.barraStat{
+.barraStat {
     grid-column: 2;
     grid-row: 2;
 }
-.VidaAtual,.SanidadeAtual,.MagiaAtual{
+.VidaAtual,
+.SanidadeAtual,
+.MagiaAtual {
     grid-column: 1;
     grid-row: 2;
 }
-.VidaMáxima,.SanidadeMáxima,.MagiaMáxima{
+.VidaMáxima,
+.SanidadeMáxima,
+.MagiaMáxima {
     grid-column: 3;
     grid-row: 2;
 }
-.statsProfile{
+.statsProfile {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 5px;
@@ -258,27 +341,29 @@ body {
     grid-column: 2/4;
     grid-row: 2;
 }
-.titleStatProfile{
+.titleStatProfile {
     border-bottom: 1px solid white;
     outline: 1px solid white;
     grid-column: 1/4;
     grid-row: 1;
 }
 
-.PVProfile{
+.PVProfile {
     grid-column: 1;
     grid-row: 1;
 }
-.PSProfile{
+.PSProfile {
     grid-column: 2;
     grid-row: 1;
 }
-.PMProfile{
+.PMProfile {
     grid-column: 3;
     grid-row: 1;
 }
 
-.PSProfile,.PMProfile,.PVProfile{
+.PSProfile,
+.PMProfile,
+.PVProfile {
     display: grid;
     border: 1px solid white;
     outline: 1px solid white;
@@ -291,20 +376,22 @@ body {
     margin-right: 1px;
     font-size: 20px;
 }
-.VidaAtualProfile,.SanidadeAtualProfile,.MagiaAtualProfile{
+.VidaAtualProfile,
+.SanidadeAtualProfile,
+.MagiaAtualProfile {
     font-size: 20px;
     grid-column: 1;
     grid-row: 2;
 }
-.VidaMáximaProfile,.SanidadeMáximaProfile,.MagiaMáximaProfile{
+.VidaMáximaProfile,
+.SanidadeMáximaProfile,
+.MagiaMáximaProfile {
     font-size: 20px;
     grid-column: 3;
     grid-row: 2;
 }
 
-
-
-.lins{
+.lins {
     font-size: 20px;
     width: 76px;
     text-align: center;
@@ -316,7 +403,7 @@ body {
     grid-column: 3;
 }
 
-#Lins{
+#Lins {
     font-family: monospace;
     font-size: 20px;
     width: 70px;
@@ -327,11 +414,11 @@ body {
     border: none;
     border-top: 1px solid white;
 }
-#Lins:focus{
+#Lins:focus {
     outline: none;
 }
 
-.EXP{
+.EXP {
     font-size: 20px;
     width: 76px;
     text-align: center;
@@ -343,7 +430,7 @@ body {
     grid-column: 2;
 }
 
-#Exp{
+#Exp {
     font-family: monospace;
     font-size: 20px;
     width: 70px;
@@ -355,35 +442,35 @@ body {
     border-top: 1px solid white;
 }
 
-#Exp:focus{
+#Exp:focus {
     outline: none;
 }
 
 /* COISAS PERICIAS */
-.pericias{
+.pericias {
     display: grid;
     justify-content: center;
     grid-column: 2;
     grid-row: 3/5;
 }
-.periciaType{
+.periciaType {
     color: white;
     font-family: monospace;
     font-size: 36px;
     padding: 20px;
 }
-.periciaNameValue{
+.periciaNameValue {
     display: grid;
     border: 1px solid white;
     border-bottom: none;
     width: fit-content;
 }
-.buttonsGroup{
+.buttonsGroup {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-column: 2;
 }
-.buttonsGroup > *{
+.buttonsGroup > * {
     font-family: monospace;
     font-size: 20px;
     color: white;
@@ -392,24 +479,29 @@ body {
     border-left: 1px solid white;
     background: #00000000;
 }
-.periciaName:hover,.up:hover,.down:hover{
-    color:black;
+.periciaName:hover,
+.up:hover,
+.down:hover {
+    color: black;
     background: white;
 }
-.periciaName:active,.up:active,.down:active{
+.periciaName:active,
+.up:active,
+.down:active {
     background: grey;
 }
-.periciaValue{
+.periciaValue {
     text-align: center;
     width: 40px;
 }
-.up,.down{
+.up,
+.down {
     width: 40px;
 }
 /*  */
 
 /* OUTRAS COISAS DAS PERICIAS */
-.periciaName{
+.periciaName {
     grid-column: 1;
     font-family: monospace;
     color: white;
@@ -420,66 +512,84 @@ body {
     border-bottom: none;
     background: #00000000;
 }
-.up,.down,.periciaName,.periciaValue{
+.up,
+.down,
+.periciaName,
+.periciaValue {
     padding: 1px;
 }
-#SaltarButton,#SaltarButtons,
-#MedicinaButton,#MedicinaButtons,
-#LínguasButton,#LínguasButtons,
-#LockPickButton,#LockPickButtons,
-#CharmeButton,#CharmeButtons,
-#ShotgunsButton,#ShotgunsButtons,
-#EncontrarButton,#EncontrarButtons {
+#SaltarButton,
+#SaltarButtons,
+#MedicinaButton,
+#MedicinaButtons,
+#LínguasButton,
+#LínguasButtons,
+#LockPickButton,
+#LockPickButtons,
+#CharmeButton,
+#CharmeButtons,
+#ShotgunsButton,
+#ShotgunsButtons,
+#EncontrarButton,
+#EncontrarButtons {
     border-bottom: 1px solid white;
 }
 /*  */
 
 /* MAIS COISAS DAS PERICIAS SO QUE AGORA MAIS ESPECIFICO */
-#Físico{
+#Físico {
     grid-column: 1;
     grid-row: 2;
 }
-#Ciências{
+#Ciências {
     grid-column: 2;
     grid-row: 2;
 }
-#Geral{
+#Geral {
     grid-column: 3;
     grid-row: 2;
 }
-#Tecnologia{
+#Tecnologia {
     grid-column: 1;
     grid-row: 3;
 }
-#Sociais{
+#Sociais {
     grid-column: 2;
     grid-row: 3;
 }
-#Armas{
+#Armas {
     grid-column: 3;
     grid-row: 3;
 }
-#Percepção,#PercepçãoButtons{
+#Percepção,
+#PercepçãoButtons {
     grid-column: 2;
     grid-row: 1;
 }
-#Percepção > *{
+#Percepção > * {
     width: 240px;
     color: red;
 }
-#IntuiçãoButton,#EscutarButton,#EncontrarButton{
+#IntuiçãoButton,
+#EscutarButton,
+#EncontrarButton {
     width: 150px;
 }
-#Intuição,#IntuiçãoUp,#IntuiçãoDown,
-#Escutar,#EscutarUp,#EscutarDown,
-#Encontrar,#EncontrarUp,#EncontrarDown
-{
+#Intuição,
+#IntuiçãoUp,
+#IntuiçãoDown,
+#Escutar,
+#EscutarUp,
+#EscutarDown,
+#Encontrar,
+#EncontrarUp,
+#EncontrarDown {
     width: 30px;
 }
 /*  */
 
 /* RESISTENCIAS */
-.resistances{
+.resistances {
     display: grid;
     font-family: monospace;
     font-size: 20px;
@@ -490,34 +600,35 @@ body {
     align-content: center;
     justify-content: center;
 }
-.resistancesGrid{
+.resistancesGrid {
     display: grid;
     width: fit-content;
     justify-content: space-between;
     border: 1px solid white;
 }
-.titleResistances{
+.titleResistances {
     font-size: 22px;
 }
-.resistanceName{
+.resistanceName {
     grid-column: 1;
     width: 140px;
     padding: 1px;
 }
-.resistanceValue{
+.resistanceValue {
     grid-column: 3;
     text-align: center;
     padding-top: 1px;
     width: 40px;
     border-left: 1px solid white;
 }
-.resistanceUp{
+.resistanceUp {
     grid-column: 2;
 }
-.resistanceDown{
+.resistanceDown {
     grid-column: 4;
 }
-.resistanceUp,.resistanceDown{
+.resistanceUp,
+.resistanceDown {
     width: 30px;
     text-align: center;
     font-size: 18px;
@@ -528,22 +639,24 @@ body {
     background: black;
     color: white;
 }
-.resistanceUp:hover,.resistanceDown:hover{
+.resistanceUp:hover,
+.resistanceDown:hover {
     color: black;
     background-color: white;
 }
-.resistanceUp:active,.resistanceDown:active{
+.resistanceUp:active,
+.resistanceDown:active {
     background-color: grey;
 }
 
 /* ATRIBUTOS */
-.attributesFicha{
+.attributesFicha {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-row: 2;
     grid-column: 2;
 }
-.attributesGrid{
+.attributesGrid {
     display: grid;
     font-family: monospace;
     font-size: 24px;
@@ -556,11 +669,11 @@ body {
     padding-right: 10px;
     width: 75px;
 }
-.attributesGrid > *{
+.attributesGrid > * {
     height: 24px;
 }
 
-.attributeNameFicha{
+.attributeNameFicha {
     background-color: black;
     color: white;
     font-family: monospace;
@@ -572,20 +685,21 @@ body {
     border-bottom: none;
     width: 70px;
 }
-.attributeNameFicha:hover{
+.attributeNameFicha:hover {
     background-color: white;
     color: black;
 }
-.attributeNameFicha:active{
+.attributeNameFicha:active {
     background-color: grey;
 }
-.attributeButtonsFicha{
+.attributeButtonsFicha {
     display: flex;
     width: fit-content;
     border: 1px solid white;
     justify-content: space-between;
 }
-.attributeUp,.attributeDown{
+.attributeUp,
+.attributeDown {
     font-family: monospace;
     font-size: 20px;
     width: 20px;
@@ -593,24 +707,26 @@ body {
     color: white;
     padding: 0px;
 }
-.attributeUp:hover,.attributeDown:hover{
+.attributeUp:hover,
+.attributeDown:hover {
     background-color: white;
     color: black;
 }
-.attributeUp:active,.attributeDown:active{
+.attributeUp:active,
+.attributeDown:active {
     background-color: grey;
 }
 
-.attributeUp{
+.attributeUp {
     border: none;
     border-right: 1px solid white;
 }
-.attributeDown{
-    border:none;
+.attributeDown {
+    border: none;
     border-left: 1px solid white;
 }
 
-.attributeValueFicha{
+.attributeValueFicha {
     width: 24px;
     text-align: center;
     font-size: 20px;
@@ -619,50 +735,54 @@ body {
 }
 
 /* ITEMS */
-.Items{
+.Items {
     display: grid;
     padding: 0px;
     width: min-content;
-    grid-template-columns: repeat(1,1fr);
+    grid-template-columns: repeat(1, 1fr);
     font-size: 20px;
     align-content: center;
     grid-column: 1;
     grid-row: 1/3;
 }
 
-.Item{
+.Item {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     border-bottom: 1px solid white;
 }
 
-.itemName{
+.itemName {
     border: 1px solid white;
     padding: 1px;
     border-bottom: 0px;
     grid-column: 1;
     width: 260px;
 }
-.itemName:hover,.plusItem:hover,.minusItem:hover{
+.itemName:hover,
+.plusItem:hover,
+.minusItem:hover {
     color: black;
     background-color: white;
 }
-.plusItem:active,.minusItem:active{
+.plusItem:active,
+.minusItem:active {
     background-color: grey;
 }
 
-.itemQuantity{
+.itemQuantity {
     width: 30px;
     padding: 1px;
     border: 1px solid white;
     border-bottom: 0px;
     grid-column: 3;
 }
-.minusItem{
+.minusItem {
     grid-column: 4;
 }
 
-.plusItem,.minusItem{
+.plusItem,
+.minusItem {
     width: 30px;
     color: white;
     font-size: 20px;
@@ -672,38 +792,41 @@ body {
     border-left: 0px;
     border-bottom: 0px;
 }
-.plusItem{
+.plusItem {
     border-right: none;
     grid-column: 2;
 }
 
-.addItem{
+.addItem {
     border: 1px solid white;
     background-color: black;
     color: white;
 }
-.addItem:hover{
+.addItem:hover {
     color: black;
     background-color: white;
 }
-.addItem:active{
+.addItem:active {
     background-color: grey;
 }
 
 /* ITENS TOOLTIP */
-.tooltip{
+.tooltip {
     border: 1px solid white;
 }
-.itemDamage,.itemDefense,.itemEffect,.itemNameTooltip{
+.itemDamage,
+.itemDefense,
+.itemEffect,
+.itemNameTooltip {
     padding: 1px;
     border-bottom: 1px solid white;
 }
-.itemDescription{
+.itemDescription {
     padding: 1px;
     border-top: 1px solid white;
 }
 
-.itemsTooltips > *{
+.itemsTooltips > * {
     font-size: 20px;
     visibility: hidden;
     position: absolute;
@@ -713,29 +836,29 @@ body {
 }
 
 /* SKILLS */
-.Skills{
+.Skills {
     display: grid;
     align-content: center;
     font-size: 20px;
     grid-column: 3;
     grid-row: 1;
 }
-.skill{
-    grid-template-columns: repeat(2,1fr);
+.skill {
+    grid-template-columns: repeat(2, 1fr);
     border: 1px solid white;
     width: 250px;
     white-space: nowrap;
 }
-.skillName{
+.skillName {
     grid-column: 1;
     width: 250px;
 }
-.skillName:hover{
+.skillName:hover {
     color: black;
     background-color: white;
 }
 
-.SkillsTooltips > *{
+.SkillsTooltips > * {
     font-size: 20px;
     visibility: hidden;
     position: absolute;
@@ -743,67 +866,70 @@ body {
     color: white;
     width: 300px;
 }
-.skillTooltip{
+.skillTooltip {
     display: grid;
     border: 1px solid white;
 }
-.skillCost{
+.skillCost {
     grid-row: 1;
 }
-.skillDescription{
+.skillDescription {
     grid-row: 2;
 }
-.skillCost2{
+.skillCost2 {
     grid-row: 3;
 }
-.skillDescription2{
+.skillDescription2 {
     grid-row: 4;
 }
-.skillType{
+.skillType {
     grid-row: 5;
 }
-.skillCost,.skillDescription,.skillCost2,.skillDescription2{
+.skillCost,
+.skillDescription,
+.skillCost2,
+.skillDescription2 {
     border-bottom: 1px solid white;
     padding: 2px;
 }
 
-.skillType{
+.skillType {
     border-top: 1px solid white;
 }
-.improved{
+.improved {
     width: fit-content;
     border-bottom: 1px solid white;
 }
 
-#typeDano{
+#typeDano {
     color: red;
 }
-#typeCura{
+#typeCura {
     color: rgb(0, 255, 0);
 }
-#typeUtilidade{
+#typeUtilidade {
     color: blue;
 }
-#typeCC{
+#typeCC {
     color: #c05600;
 }
-#typeBuff{
+#typeBuff {
     color: rgb(255, 0, 170);
 }
-#typePassiva{
+#typePassiva {
     color: grey;
 }
-#typeMovimento{
+#typeMovimento {
     color: yellow;
 }
-#typeReação{
+#typeReação {
     color: rgb(162, 0, 255);
 }
 
-.containerD20{
+.containerD20 {
     display: grid;
     /* visibility: hidden; */
-    grid-template-rows: repeat(4,1fr);
+    grid-template-rows: repeat(4, 1fr);
     border: 1px solid white;
     background-color: black;
     position: fixed;
@@ -815,7 +941,7 @@ body {
     margin-top: -120px;
     margin-left: -120px;
 }
-.rollDice{
+.rollDice {
     display: grid;
     align-items: center;
     width: max-content;
@@ -823,7 +949,7 @@ body {
 
 .containerMultiDices {
     display: grid;
-    grid-template-columns: repeat(4,auto);
+    grid-template-columns: repeat(4, auto);
     border: 1px solid white;
     background-color: black;
     position: fixed;
@@ -833,22 +959,22 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.nomePericia{
+.nomePericia {
     border-bottom: 1px solid white;
     font-size: 20px;
     grid-row: 1;
     grid-column: 1;
-}   
-.dadoImg{
+}
+.dadoImg {
     grid-row: 2;
     grid-column: 1;
 }
-.numeroRolado{
+.numeroRolado {
     font-size: 30px;
     grid-row: 2;
     grid-column: 1;
 }
-.resultadoTexto{
+.resultadoTexto {
     position: fixed;
     /* visibility: hidden; */
     border: 1px solid white;
@@ -864,21 +990,24 @@ body {
     grid-column: 1;
 }
 
-.multidados{
+.multidados {
     display: grid;
     grid-column: 3;
     grid-row: 3;
     justify-content: center;
 }
-#inputMultiDados,.textTipoDado,.textResultDado,.totalDados{
+#inputMultiDados,
+.textTipoDado,
+.textResultDado,
+.totalDados {
     grid-column: 1;
     font-size: 20px;
 }
-.botaoMultiDados{
+.botaoMultiDados {
     grid-column: 2;
     grid-row: 1;
 }
-.botaoMultiDados{
+.botaoMultiDados {
     background-color: black;
     height: fit-content;
     padding: 0px;
@@ -887,15 +1016,15 @@ body {
     border: 1px solid white;
     color: white;
 }
-.botaoMultiDados:hover{
+.botaoMultiDados:hover {
     color: black;
     background-color: white;
 }
-.botaoMultiDados:active{
+.botaoMultiDados:active {
     background-color: grey;
 }
 
-#inputMultiDados{
+#inputMultiDados {
     height: fit-content;
     background-color: black;
     padding: 0px;
@@ -905,13 +1034,12 @@ body {
     font-size: 20px;
     width: 100px;
 }
-#inputMultiDados:focus{
+#inputMultiDados:focus {
     border: 1px solid white;
     outline: none;
 }
 
-
-.anotações{
+.anotações {
     display: grid;
     font-size: 30px;
     grid-column: 3;
@@ -919,8 +1047,8 @@ body {
     align-content: center;
 }
 
-.anotaçõesInput{
-    display:inline-block;
+.anotaçõesInput {
+    display: inline-block;
     width: 300px;
     height: 250px;
     padding: 0px;
@@ -930,12 +1058,12 @@ body {
     color: white;
     border: 1px solid white;
 }
-.anotaçõesInput:focus{
+.anotaçõesInput:focus {
     border: 1px solid white;
     outline: none;
 }
 
-#nomeItem{
+#nomeItem {
     font-family: monospace;
     text-align: center;
     border: 1px solid white;
@@ -943,7 +1071,7 @@ body {
     color: white;
 }
 
-#nomeItem:focus{
+#nomeItem:focus {
     border: 1px solid white;
     outline: none;
 }
@@ -956,7 +1084,18 @@ body {
     font-size: 20px;
 } */
 
-#tooltipPerfurante,#tooltipCorte,#tooltipBrusco,#tooltipElemental,#tooltipVeneno,#tooltipMorte,#tooltipMagia,#tooltipPV,#tooltipPS,#tooltipPM,#tooltipExp,#tooltipLins{
+#tooltipPerfurante,
+#tooltipCorte,
+#tooltipBrusco,
+#tooltipElemental,
+#tooltipVeneno,
+#tooltipMorte,
+#tooltipMagia,
+#tooltipPV,
+#tooltipPS,
+#tooltipPM,
+#tooltipExp,
+#tooltipLins {
     overflow-wrap: break-word;
     position: fixed;
     visibility: hidden;

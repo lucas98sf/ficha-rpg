@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Profile({
     Nome,
-    Imagem,
+    Imagens,
     Raça,
     Status,
     Atributos,
@@ -30,7 +30,7 @@ export default function Profile({
                         width={280}
                         height={280}
                         unoptimized={true}
-                        src={Imagem}
+                        src={Imagens["Imagem1"]}
                     ></Image>
                 </div>
                 {/* <div className="playerRaceText">{Raça}</div> */}
