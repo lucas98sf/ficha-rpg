@@ -30,6 +30,7 @@ export default function PlayerPage({ players }) {
                         Atributos,
                         Cor,
                     };
+                    if(player.Nome == "teste") {return}
                     return <Profile key={`${Nome}profile`} {...props} />;
                 })}
             </div>
