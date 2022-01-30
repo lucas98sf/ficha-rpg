@@ -8,7 +8,6 @@ import {
 import Image from "next/image";
 let nomeImagem = "Imagem1";
 import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
 
 export default function Stats({ Nome, Imagens, Raça, Status, Lins, Exp }) {
     const [qualFoto, setFoto] = useState(nomeImagem);
