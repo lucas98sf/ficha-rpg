@@ -846,12 +846,11 @@ body {
 .skill {
     grid-template-columns: repeat(2, 1fr);
     border: 1px solid white;
-    width: 250px;
+    width: 270px;
     white-space: nowrap;
 }
 .skillName {
     grid-column: 1;
-    width: 250px;
 }
 .skillName:hover {
     color: black;
