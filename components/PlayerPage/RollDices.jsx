@@ -62,7 +62,7 @@ export default function RollDices() {
                         />
                     ))
                 )}
-                <center className="totalResult">{totalResult}</center>
+                <div className="totalResult">Total: {totalResult}</div>
             </div>
         );
         ReactDOM.render(dices, container);
