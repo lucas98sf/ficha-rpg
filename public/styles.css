@@ -989,7 +989,7 @@ body {
     grid-column: 1;
 }
 
-.multidados {
+.multiDados {
     display: grid;
     grid-column: 3;
     grid-row: 3;

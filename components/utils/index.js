@@ -1,6 +1,8 @@
 import axios from "axios";
 import _ from "lodash";
 import RollTest from "../PlayerPage/RollTest";
+import React, { useEffect, useState } from "react";
+import { RollDice } from "../PlayerPage/RollDices";
 import ReactDOM from "react-dom";
 
 const getValueById = (id) => {
@@ -13,16 +15,53 @@ const getTextById = (id) => {
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
-let rolandoDado = false;
-async function rollD20(nomePericia) {
-    if (rolandoDado) return;
-    rolandoDado = true;
+let renderingDices = false;
+async function renderD20(nomePericia) {
+    if (renderingDices) return;
+    renderingDices = true;
     const props = { nomePericia, pericia: getTextById(nomePericia) };
     const container = document.getElementById("dicesModal");
     ReactDOM.render(<RollTest {...props} />, container);
     await timer(3100);
     ReactDOM.unmountComponentAtNode(container);
-    rolandoDado = false;
+    renderingDices = false;
+}
+
+async function renderDices(results) {
+    if (renderingDices) return;
+    renderingDices = true;
+    const container = document.getElementById("dicesModal");
+    const totalResultValue = results.reduce((acc, cur) => acc + cur.result, 0);
+    const Dices = () => {
+        const [totalResult, setTotalResult] = useState(null);
+
+        useEffect(() => {
+            if (totalResult === null) {
+                timer(1500).then(() => setTotalResult(totalResultValue));
+            }
+        }, [totalResult]);
+
+        return (
+            <div className="containerMultiDices">
+                {results.map(({ quantity, type, result }) =>
+                    Array.of(quantity).map(() => (
+                        <RollDice
+                            key={`dice-${type}`}
+                            type={type}
+                            finalResult={result}
+                        />
+                    ))
+                )}
+                {totalResult && (
+                    <div className="totalResult">Total: {totalResult}</div>
+                )}
+            </div>
+        );
+    };
+    ReactDOM.render(<Dices />, container);
+    await timer(5000);
+    ReactDOM.unmountComponentAtNode(container);
+    renderingDices = false;
 }
 
 function updateAnotacoes(nomePlayer) {
@@ -194,7 +233,7 @@ function tooltipMouse(e, Nome) {
     tooltip.style.left = x - tipX + "px";
 }
 
-function tooltipMouseFixo(e, Nome){
+function tooltipMouseFixo(e, Nome) {
     const tooltip = document.getElementById(`tooltip${Nome}`);
     tooltip.style.visibility = "visible";
 }
@@ -216,7 +255,8 @@ export {
     mudarValorStat,
     updatePlayer,
     buscarItem,
-    rollD20,
+    renderD20,
+    renderDices,
     updateAnotacoes,
     tooltipMouseFixo,
 };

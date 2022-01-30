@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import { renderDices } from "../utils";
 import Dice from "./Dice";
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 const randomDiceNumber = (diceSize) => Math.floor(Math.random() * diceSize + 1);
 
-function RollDice({ type, finalResult }) {
+export function RollDice({ type, finalResult }) {
     document
         .querySelectorAll(".numeroRolado")
         .forEach((elem) => (elem.style.fontSize = "25px"));
@@ -31,48 +31,34 @@ function RollDice({ type, finalResult }) {
 
 export default function RollDices() {
     const [dices, setDices] = useState("");
+    const errorMessage = () =>
+        alert("O formato correto é '2d6+3d8', por exemplo.");
     const rollDices = () => {
-        if (!dices) return;
-        const splittedDices = dices.split("+");
-        const results = [];
-        for (const dice of splittedDices) {
-            const [quantity, type] = dice.split("d");
-            for (let i = 0; i < quantity; i++) {
-                let result = randomDiceNumber(type);
-                results = [...results, { quantity, type, result }];
+        if (!dices || !dices.includes("d")) return errorMessage();
+        try {
+            const splittedDices = dices.split("+");
+            const results = [];
+            for (const dice of splittedDices) {
+                const [quantity, type] = dice.split("d");
+                if (type % 2 !== 0)
+                    return alert(
+                        "Os dados devem ter uma quantidade par de faces."
+                    );
+                for (let i = 0; i < quantity; i++) {
+                    let result = randomDiceNumber(type);
+                    results = [...results, { quantity, type, result }];
+                }
+                if (results.length > 15)
+                    return alert("Não é possível rolar mais de 15 dados.");
             }
+            renderDices(results);
+        } catch (err) {
+            return errorMessage();
         }
-        renderDices(results);
-    };
-
-    let renderingDices = false;
-    const renderDices = async (results) => {
-        if (renderingDices) return;
-        renderingDices = true;
-        const container = document.getElementById("dicesModal");
-        const totalResult = results.reduce((acc, cur) => acc + cur.result, 0);
-        const dices = (
-            <div className="containerMultiDices">
-                {results.map(({ quantity, type, result }) =>
-                    Array.of(quantity).map(() => (
-                        <RollDice
-                            key={`dice-${type}`}
-                            type={type}
-                            finalResult={result}
-                        />
-                    ))
-                )}
-                <div className="totalResult">Total: {totalResult}</div>
-            </div>
-        );
-        ReactDOM.render(dices, container);
-        await timer(3100);
-        ReactDOM.unmountComponentAtNode(container);
-        renderingDices = false;
     };
 
     return (
-        <div className="multidados">
+        <div className="multiDados">
             <input
                 type="text"
                 id="inputMultiDados"
