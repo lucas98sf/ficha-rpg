@@ -3,7 +3,14 @@ import mongoose, { Schema } from 'mongoose';
 const PlayerSchema = new Schema({
     Imagens:{
         Imagem1: { type: String },
-        Imagem2: { type: String }
+        Imagem2: { type: String },
+        Imagem3: { type: String },
+        Imagem4: { type: String },
+        Imagem5: { type: String },
+        Imagem6: { type: String },
+        Imagem7: { type: String },
+        Imagem8: { type: String },
+        Imagem9: { type: String },
     },
     Cor: { type: String },
     Nome: { type: String, required: true, trim: true, unique: true },

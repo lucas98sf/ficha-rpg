@@ -42,7 +42,7 @@ export default function PlayerPage({ players }) {
                         Atributos,
                         Cor,
                     };
-                    if (player.Nome == "Golem") {
+                    if (player.Raça == "NPC") {
                         return;
                     }
                     return <Profile key={`${Nome}profile`} {...props} />;
