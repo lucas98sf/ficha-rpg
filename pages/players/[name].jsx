@@ -10,7 +10,6 @@ import {
     ItemsTooltips,
     SkillsTooltips,
     RollDices,
-    ImageTooltips
 } from "../../components/PlayerPage";
 import Image from "next/image";
 import Link from "next/link";
@@ -100,7 +99,6 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
                 <RollDices />
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
-            {/* <ImageTooltips /> */}
             <div id="dicesModal"/>
         </center>
     );
