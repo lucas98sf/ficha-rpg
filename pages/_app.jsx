@@ -21,7 +21,12 @@ function MyApp({ Component, pageProps }) {
 
     return pageLoading ? (
         <div className="loading">
-            <Image src={`/images/load.gif`} alt="loading" width="500" height="300"/>
+            <Image
+                src={`/images/load.gif`}
+                alt="loading"
+                width="500"
+                height="300"
+            />
         </div>
     ) : (
         <Component {...pageProps} />
