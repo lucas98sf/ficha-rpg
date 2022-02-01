@@ -755,7 +755,8 @@ body {
     max-height: 270px;
     font-size: 20px;
     overflow-y: scroll;
-}::-webkit-scrollbar {
+}
+::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
 }
@@ -763,7 +764,7 @@ body {
 .Item {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border-bottom: 1px solid white;    
+    border-bottom: 1px solid white;
 }
 
 .itemName {
@@ -1129,4 +1130,11 @@ body {
     padding: 3px;
     width: 250px;
     font-size: 20px;
+}
+
+.loading {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
