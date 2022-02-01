@@ -80,9 +80,10 @@ export default function Itens({ Nome, Itens }) {
     };
 
     return (
-        <div className="Items">
-            <h3>Itens</h3>
+        <div className="blabla">
+            <div>Itens</div>
             <ItemsTooltips Itens={itens} />
+            <div className="Items">
             {itens.map(({ Nome, Quantidade, ID }, index) => {
                 return (
                     <div key={Nome} className="Item">
@@ -122,6 +123,7 @@ export default function Itens({ Nome, Itens }) {
                     </div>
                 );
             })}
+            </div>
             <input id="nomeItem" type="text" placeholder="Nome do item" onKeyDown={(event) => adicionarItem(event)}/>
         </div>
     );

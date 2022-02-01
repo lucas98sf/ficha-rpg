@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
+    "install": "^0.13.0",
     "lodash": "^4.17.21",
     "mongoose": "^6.0.12",
     "mongoose-sequence": "^5.3.1",

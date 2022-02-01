@@ -40,16 +40,16 @@ export default function RollDices() {
             const results = [];
             for (const dice of splittedDices) {
                 const [quantity, type] = dice.split("d");
-                if (type % 2 !== 0)
+                if (type != 4 && type != 6 && type != 8 && type != 10 && type != 12 && type != 20)
                     return alert(
-                        "Os dados devem ter uma quantidade par de faces."
+                        "este dado n existe pare imediatamente"
                     );
                 for (let i = 0; i < quantity; i++) {
                     let result = randomDiceNumber(type);
                     results = [...results, { quantity, type, result }];
                 }
-                if (results.length > 15)
-                    return alert("Não é possível rolar mais de 15 dados.");
+                if (results.length > 16)
+                    return alert("Não é possível rolar mais de 16 dados.");
             }
             renderDices(results);
         } catch (err) {
