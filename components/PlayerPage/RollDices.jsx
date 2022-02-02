@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { renderDices } from "../utils";
 import Dice from "./Dice";
+import FadeIn from "react-fade-in";
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 const randomDiceNumber = (diceSize) => Math.floor(Math.random() * diceSize + 1);
 
-export function RollDice({ type, finalResult }) {
+export function RollDice({ type, finalResult, format }) {
     document
         .querySelectorAll(".numeroRolado")
         .forEach((elem) => (elem.style.fontSize = "25px"));
-    const [result, setResult] = useState("");
-    const [format, setFormat] = useState("gif");
 
-    useEffect(() => {
-        timer(1980)
-            .then(() => setFormat("png"))
-            .then(() => setResult(finalResult));
-    }, [finalResult, type]);
+    // useEffect(() => {
+
+    // }, [finalResult, type]);
 
     return (
         <div className="rollDice">
@@ -26,7 +23,9 @@ export function RollDice({ type, finalResult }) {
                 format={format}
                 reverse={randomDiceNumber(20) % 2 === 0}
             />
-            <div className="numeroRolado">{result}</div>
+            <FadeIn className="numeroRolado" delay="2500">
+                <div className="numeroRolado">{finalResult}</div>
+            </FadeIn>
         </div>
     );
 }

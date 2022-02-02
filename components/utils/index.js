@@ -4,6 +4,7 @@ import RollTest from "../PlayerPage/RollTest";
 import React, { useEffect, useState } from "react";
 import { RollDice } from "../PlayerPage/RollDices";
 import ReactDOM from "react-dom";
+import FadeIn from "react-fade-in";
 
 const getValueById = (id) => {
     return document.getElementById(id).value;
@@ -33,11 +34,16 @@ async function renderDices(results) {
     const container = document.getElementById("dicesModal");
     const totalResultValue = results.reduce((acc, cur) => acc + cur.result, 0);
     const Dices = () => {
-        const [totalResult, setTotalResult] = useState(null);
+        const [totalResult, setTotalResult] = useState("1");
+    const [format, setFormat] = useState("gif");
+    // const [result, setResult] = useState("");
+    timer(2500)
+        .then(() => setFormat("png"))
+        // .then(() => setResult(finalResult));
 
         useEffect(() => {
-            if (totalResult === null) {
-                timer(2000).then(() => setTotalResult(totalResultValue));
+            if (totalResult === "1") {
+                timer(3000).then(() => setTotalResult(`Total: ${totalResultValue}`));
             }
         }, [totalResult]);
 
@@ -49,17 +55,20 @@ async function renderDices(results) {
                             key={`dice-${type}`}
                             type={type}
                             finalResult={result}
+                            format={format}
                         />
                     ))
                 )}
+                <FadeIn className="totalResult" delay="3000">
                 {totalResult && (
-                    <div className="totalResult">Total: {totalResult}</div>
+                    <div>{totalResult}</div>
                 )}
+                </FadeIn>
             </div>
         );
     };
     ReactDOM.render(<Dices />, container);
-    await timer(5000);
+    await timer(6000);
     ReactDOM.unmountComponentAtNode(container);
     renderingDices = false;
 }
