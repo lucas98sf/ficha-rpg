@@ -37,7 +37,7 @@ async function renderDices(results) {
 
         useEffect(() => {
             if (totalResult === null) {
-                timer(1500).then(() => setTotalResult(totalResultValue));
+                timer(2600).then(() => setTotalResult(totalResultValue));
             }
         }, [totalResult]);
 

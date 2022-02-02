@@ -755,10 +755,12 @@ body {
     max-height: 270px;
     font-size: 20px;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
-::-webkit-scrollbar {
+.Items::-webkit-scrollbar {
     width: 0px;
-    background: transparent; /* make scrollbar transparent */
+    background: transparent;
 }
 
 .Item {
