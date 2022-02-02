@@ -4,7 +4,6 @@ import Dice from "./Dice";
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 const randomDiceNumber = (diceSize) => Math.floor(Math.random() * diceSize + 1);
-let reverse;
 
 export function RollDice({ type, finalResult }) {
     document
@@ -12,34 +11,21 @@ export function RollDice({ type, finalResult }) {
         .forEach((elem) => (elem.style.fontSize = "25px"));
     const [result, setResult] = useState("");
     const [format, setFormat] = useState("gif");
-    let end = "";
-    useEffect(() => {
-        async function changeToImg() {
-            await timer(2400);
-            end = "png";
-        }
-        changeToImg().then(() => setFormat(end));
-    }, [end]);
 
     useEffect(() => {
-        async function animateRolls() {
-            await timer(2400);
-        }
-        animateRolls().then(() => setResult(finalResult));
+        timer(2400)
+            .then(() => setFormat("png"))
+            .then(() => setResult(finalResult));
     }, [finalResult, type]);
-
-
-    let numberReverse = randomDiceNumber(20);
-    if (numberReverse % 2 == 0) {
-        reverse = false;
-    } else {
-        reverse = true;
-    }
-    console.log(reverse);
 
     return (
         <div className="rollDice">
-            <Dice size="150" type={type} format={format} reverse={reverse} />
+            <Dice
+                size="150"
+                type={type}
+                format={format}
+                reverse={randomDiceNumber(20) % 2 === 0}
+            />
             <div className="numeroRolado">{result}</div>
         </div>
     );
@@ -49,6 +35,7 @@ export default function RollDices() {
     const [dices, setDices] = useState("");
     const errorMessage = () =>
         alert("O formato correto é '2d6+3d8', por exemplo.");
+    const validTypes = [4, 6, 8, 10, 12, 20];
     const rollDices = () => {
         if (!dices || !dices.includes("d")) return errorMessage();
         try {
@@ -56,14 +43,7 @@ export default function RollDices() {
             const results = [];
             for (const dice of splittedDices) {
                 const [quantity, type] = dice.split("d");
-                if (
-                    type != 4 &&
-                    type != 6 &&
-                    type != 8 &&
-                    type != 10 &&
-                    type != 12 &&
-                    type != 20
-                )
+                if (!validTypes.includes(Number(type)))
                     return alert("este dado n existe pare imediatamente");
                 for (let i = 0; i < quantity; i++) {
                     let result = randomDiceNumber(type);
