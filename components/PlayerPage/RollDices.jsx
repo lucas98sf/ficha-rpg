@@ -13,7 +13,7 @@ export function RollDice({ type, finalResult }) {
     const [format, setFormat] = useState("gif");
 
     useEffect(() => {
-        timer(2400)
+        timer(1980)
             .then(() => setFormat("png"))
             .then(() => setResult(finalResult));
     }, [finalResult, type]);
