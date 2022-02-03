@@ -1,8 +1,9 @@
+import { reduce } from "lodash";
 import Image from "next/image";
 
 export default function Dice({ type, size, format, reverse }) {
     return (
-        <div className="dadoImg">
+        <div className="dadoImg" style={reverse ? {background: "red"} : {background: "none"}}>
             {/* {console.log(format)} */}
             <Image
                 src={`/images/D${type}${reverse ? "reverse" : ""}.${format}`}

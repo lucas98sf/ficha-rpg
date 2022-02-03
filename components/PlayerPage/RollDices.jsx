@@ -9,7 +9,7 @@ const randomDiceNumber = (diceSize) => Math.floor(Math.random() * diceSize + 1);
 export function RollDice({ type, finalResult, format }) {
     document
         .querySelectorAll(".numeroRolado")
-        .forEach((elem) => (elem.style.fontSize = "25px"));
+        .forEach((elem) => (elem.style.fontSize = "20px"));
 
     // useEffect(() => {
 
@@ -18,7 +18,7 @@ export function RollDice({ type, finalResult, format }) {
     return (
         <div className="rollDice">
             <Dice
-                size="150"
+                size="128"
                 type={type}
                 format={format}
                 reverse={randomDiceNumber(20) % 2 === 0}

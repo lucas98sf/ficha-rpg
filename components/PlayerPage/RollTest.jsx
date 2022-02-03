@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Dice from "./Dice";
+import FadeIn from "react-fade-in";
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -8,15 +9,18 @@ export default function RollTest({ nomePericia, pericia }) {
 
     const [result, setResult] = useState(randomD20Number());
     const [resultText, setResultText] = useState(null);
+    const [format, setFormat] = useState("gif");
 
     useEffect(() => {
         const finalResult = randomD20Number();
 
         async function animateRolls() {
-            for (let i = 0; i < 15; i++) {
-                await timer(100);
-                setResult(randomD20Number());
-            }
+            // for (let i = 0; i < 15; i++) {
+            //     await timer(100);
+            //     setResult(randomD20Number());
+            // }
+            await timer(2040);
+            setFormat("png");
             setResult(finalResult);
         }
 
@@ -56,9 +60,13 @@ export default function RollTest({ nomePericia, pericia }) {
     return (
         <div className="containerD20">
             <div className="nomePericia">{nomePericia}</div>
-            <div className="numeroRolado">{result}</div>
-            <Dice size="200" type="20"/>
-            {resultText && <div className="resultadoTexto">{resultText}</div>}
+            <FadeIn className="numeroRolado" delay="2040">
+                <div className="numeroRolado">{result}</div>
+            </FadeIn>
+            <FadeIn className="resultadoTexto" delay="300">
+                {resultText && <div>{resultText}</div>}
+            </FadeIn>
+            <Dice size="192" type="20solo" format={format} reverse={false} />
         </div>
     );
 }

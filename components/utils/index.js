@@ -23,7 +23,7 @@ async function renderD20(nomePericia) {
     const props = { nomePericia, pericia: getTextById(nomePericia) };
     const container = document.getElementById("dicesModal");
     ReactDOM.render(<RollTest {...props} />, container);
-    await timer(3100);
+    await timer(4000);
     ReactDOM.unmountComponentAtNode(container);
     renderingDices = false;
 }
