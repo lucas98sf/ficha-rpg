@@ -10,6 +10,7 @@ import {
     ItemsTooltips,
     SkillsTooltips,
     RollDices,
+    TempFixDices,
 } from "../../components/PlayerPage";
 import Image from "next/image";
 import Link from "next/link";
@@ -100,6 +101,7 @@ export default function PlayerPage({ player, Itens, Habilidades }) {
             </div>
             <SkillsTooltips Habilidades={Habilidades} />
             <div id="dicesModal"/>
+            <TempFixDices />
         </center>
     );
 }

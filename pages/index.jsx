@@ -27,7 +27,7 @@ export default function Home() {
                 height="300"
             />
         </div>
-        ) : (
+    ) : (
         <div>
             <div className="WIP">
                 <Image
@@ -39,17 +39,16 @@ export default function Home() {
                 />
             </div>
             <div className="linkPlayers">
-            <Link href="/players"  passHref>
-            <Image 
-                    src="/images/loadFixed.png"
-                    alt="link"
-                    width="500"
-                    height="300"
-                    unoptimized={true}
-                />
-            </Link>
+                <Link href="/players" passHref>
+                    <Image
+                        src="/images/loadFixed.png"
+                        alt="link"
+                        width="500"
+                        height="300"
+                        unoptimized={true}
+                    />
+                </Link>
             </div>
         </div>
-        )
-    ;
+    );
 }

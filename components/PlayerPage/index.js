@@ -8,5 +8,6 @@ import ItemsTooltips from "./ItemsTooltips";
 import SkillsTooltips from "./SkillsTooltips";
 import TextTooltips from "./TextTooltips";
 import RollDices from "./RollDices";
+import TempFixDices from "./TempFixDices";
 
-export { Attributes, Expertises, Resistances, Stats, Items, Skills, ItemsTooltips, SkillsTooltips, RollDices, TextTooltips };
+export { Attributes, Expertises, Resistances, Stats, Items, Skills, ItemsTooltips, SkillsTooltips, RollDices, TextTooltips, TempFixDices };
